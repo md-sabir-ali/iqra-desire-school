@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Facebook, Mail, Phone, MapPin, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import { Facebook, Mail, Phone, MapPin } from "lucide-react";
 import { mainNav } from "@/config/nav";
 import { siteConfig } from "@/config/site";
 
@@ -10,9 +11,15 @@ export function Footer() {
       <div className="container-page grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-3">
         {/* About */}
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
-              <GraduationCap className="h-5 w-5" aria-hidden="true" />
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-1">
+              <Image
+                src={siteConfig.logo}
+                alt={`${siteConfig.name} logo`}
+                width={44}
+                height={44}
+                className="h-full w-full object-contain"
+              />
             </span>
             <span className="text-lg font-bold">{siteConfig.name}</span>
           </div>

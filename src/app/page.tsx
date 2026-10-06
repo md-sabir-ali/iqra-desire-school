@@ -7,7 +7,7 @@ import {
   Trophy,
   ArrowRight,
 } from "lucide-react";
-import { Hero } from "@/components/Hero";
+import { HeroSlider } from "@/components/HeroSlider";
 import { Section, SectionHeading } from "@/components/Section";
 import { FeatureCard, StatCard } from "@/components/Cards";
 import { NoticeCard } from "@/components/NoticeCard";
@@ -23,7 +23,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero />
+      <HeroSlider />
 
       {/* Welcome / intro */}
       <Section>

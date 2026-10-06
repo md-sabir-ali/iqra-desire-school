@@ -14,15 +14,17 @@
 export const siteConfig = {
   name: "Iqra Desire English School",
   shortName: "Iqra Desire",
-  tagline: "Nurturing Knowledge, Shaping Futures",
+  tagline: "Learn • Grow • Achieve",
+  motto: "Education, Providence, Honest Excellence",
+  logo: "/images/galary/iqr.png",
   description:
-    "Iqra Desire English School, Simri, Buxar (Bihar) — a English-medium school offering quality education from Nursery to Class 10 with a focus on strong values, discipline, and holistic growth.",
+    "Iqra Desire English School, Ramopatti, Simri, Buxar (Bihar) — a English-medium school offering quality education from Nursery to Class 10 with a focus on strong values, discipline, and holistic growth.",
 
   // Classes offered
   classesRange: "Nursery to Class 10",
 
-  // Not published yet — leave blank until confirmed.
-  establishedYear: "",
+  // Established year (from the school logo: ESTD 2013)
+  establishedYear: "2013",
 
   // Contact details
   contact: {

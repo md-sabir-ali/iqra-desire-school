@@ -8,23 +8,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand palette — deep green (trust, growth) + warm accent.
+        // Brand palette — navy blue + gold, matching the school logo.
         brand: {
-          50: "#f0f9f4",
-          100: "#dbf0e3",
-          200: "#b9e1ca",
-          300: "#8acba8",
-          400: "#56ad81",
-          500: "#339063",
-          600: "#23744f",
-          700: "#1d5c41",
-          800: "#194a36",
-          900: "#153d2d",
+          50: "#eef2f9",
+          100: "#d8e0f0",
+          200: "#b3c3e0",
+          300: "#8099c9",
+          400: "#4d6daf",
+          500: "#2b4e94",
+          600: "#1f3c76",
+          700: "#1a3366",
+          800: "#152a54",
+          900: "#0f1f3f",
         },
         accent: {
-          400: "#fbbf24",
-          500: "#f59e0b",
-          600: "#d97706",
+          400: "#e3b23c",
+          500: "#d4a017",
+          600: "#b8860b",
         },
       },
       fontFamily: {

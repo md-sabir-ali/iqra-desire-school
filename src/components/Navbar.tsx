@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, GraduationCap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { mainNav } from "@/config/nav";
 import { siteConfig } from "@/config/site";
 
@@ -14,10 +15,15 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
       <nav className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label={siteConfig.name}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-600 text-white">
-            <GraduationCap className="h-5 w-5" aria-hidden="true" />
-          </span>
+        <Link href="/" className="flex items-center gap-2.5" aria-label={siteConfig.name}>
+          <Image
+            src={siteConfig.logo}
+            alt={`${siteConfig.name} logo`}
+            width={44}
+            height={44}
+            className="h-11 w-11 object-contain"
+            priority
+          />
           <span className="text-base font-bold leading-tight text-brand-800 sm:text-lg">
             {siteConfig.shortName}
             <span className="hidden sm:inline"> English School</span>
