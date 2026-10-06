@@ -90,15 +90,14 @@ export default function ContactPage() {
             <SectionHeading eyebrow="Location" title="Find Us on the Map" />
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-gray-50">
               {/*
-                TODO: Replace the src below with your real Google Maps embed link.
-                How to get it:
-                 1. Open Google Maps, search your school.
+                This map searches the school's address area. For an exact pin:
+                 1. Open Google Maps, search your school by name.
                  2. Click Share > Embed a map > copy the src URL from the iframe.
                  3. Paste that URL into the src="" below.
               */}
               <iframe
                 title={`${siteConfig.name} location`}
-                src="https://www.google.com/maps?q=Simri%2C%20Buxar%2C%20Bihar&output=embed"
+                src="https://www.google.com/maps?q=Ramopatti%2C%20Simri%2C%20Buxar%2C%20Bihar%20802135&output=embed"
                 className="h-80 w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

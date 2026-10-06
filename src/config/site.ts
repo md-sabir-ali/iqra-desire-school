@@ -21,17 +21,17 @@ export const siteConfig = {
   // Classes offered
   classesRange: "Nursery to Class 10",
 
-  // TODO: replace with real establishment year
-  establishedYear: "20XX",
+  // Not published yet — leave blank until confirmed.
+  establishedYear: "",
 
-  // Contact details — TODO: replace with real values
+  // Contact details
   contact: {
-    phone: "+91-XXXXXXXXXX",
-    whatsapp: "+91-XXXXXXXXXX",
-    email: "info@iqradesire.edu.in",
+    phone: "083404 03400",
+    whatsapp: "+91 88091 48710",
+    email: "iqradesireenglishschool@gmail.com",
     // Full address
-    addressLine: "Simri, Buxar, Bihar, India",
-    pincode: "8021XX",
+    addressLine: "Ramopatti, Simri, Buxar, Bihar 802135",
+    pincode: "802135",
   },
 
   // Social links
