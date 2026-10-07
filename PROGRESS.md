@@ -66,6 +66,21 @@
   (Vercel auto-deploys main.) Then optionally delete v2 branch.
 - If changes wanted → stay on v2-animated, edit, push (preview auto-updates).
 
+## ===== DOMAIN: iqradesire.com (user wants to use this) =====
+- User owned/used this domain before via free hosting; it expired.
+- Checked status (2026-10-07): Verisign RDAP 404, rdap.org 404, DNS "non-existent".
+  => Domain is currently NOT registered = AVAILABLE to re-register.
+- PLAN when user is ready:
+  1. User must RE-REGISTER (buy) iqradesire.com — now PAID (~Rs 900-1200/yr .com).
+     Suggested registrars (India, UPI): GoDaddy, Hostinger, Namecheap, BigRock.
+     (Cheaper alt: .in ~Rs 500-700. But user wants the .com brand name.)
+  2. Add domain in Vercel → project → Settings → Domains (iqradesire.com + www).
+     Vercel gives A record 76.76.21.21 + CNAME for www. Set these at registrar DNS.
+  3. Wait for DNS propagate (10 min - few hrs), HTTPS auto by Vercel (free).
+  4. Update src/config/site.ts `url` to https://iqradesire.com (for SEO).
+- Hosting stays FREE on Vercel; user only pays for the domain name.
+- OPEN QUESTION: do domain first, or make v2 live first? (user to decide)
+
 ### Honest gap vs St. Mathews (design ~90% matched now). Remaining = content/photos:
 - [ ] Professional/best photos (user will download from Facebook later)
 - [ ] Principal real name + photo + message (About page, src/data/faculty.ts)
