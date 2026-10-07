@@ -39,6 +39,40 @@
 - [x] Animated HERO SLIDER on home page (auto-rotating photos) — user liked this
 - [x] Gallery filled with real photos from /public/images/galary/
 
+## ===== CURRENT STATE: WORKING ON "v2-animated" BRANCH =====
+## >>> RESUME HERE when user says continue <<<
+- Git branch `main` = current LIVE site (https://iqra-desire-school.vercel.app) — UNTOUCHED, safe.
+- Git branch `v2-animated` = NEW animated version (we are here). Pushed to GitHub.
+- v2 PREVIEW URL (Vercel): https://iqra-desire-school-git-v2-animated-sabir-tech.vercel.app/
+  NOTE: Vercel "Deployment Protection / Vercel Authentication" is ON, so the preview
+  asks for Vercel login. To view: open in a browser already logged into Vercel, OR
+  turn it off at: Vercel → project → Settings → Deployment Protection → disable.
+
+### What v2-animated adds (all built, builds pass, pushed):
+- [x] Ken Burns slow-zoom on active hero slide (globals.css @keyframes kenburns + HeroSlider)
+- [x] CountUp.tsx — stats count 0→target on scroll (IntersectionObserver)
+- [x] Reveal.tsx — fade/slide-in on scroll for sections/cards
+- [x] Animated stats band (2013 / 500+ / 25+ / 100%) on home
+- [x] standApart data + "What Makes Us Stand Apart" 6 icon cards
+- [x] PhotoBand.tsx — immersive full-width photo band (uses sport1.jpg)
+- [x] Toppers/Achievers section (2026 topper.jpg + medal.jpg)
+- [x] PillarsCarousel.tsx — auto-rotating "Our Core Pillars" carousel (arrows+dots)
+      data: corePillars in src/data/academics.ts
+- Home page (src/app/page.tsx) fully rewritten with these sections + Reveal wrappers.
+
+### DECISION PENDING from user (after they view v2 preview):
+- Does user like v2? If YES → merge v2-animated into main to make it LIVE:
+    git checkout main; git merge v2-animated; git push
+  (Vercel auto-deploys main.) Then optionally delete v2 branch.
+- If changes wanted → stay on v2-animated, edit, push (preview auto-updates).
+
+### Honest gap vs St. Mathews (design ~90% matched now). Remaining = content/photos:
+- [ ] Professional/best photos (user will download from Facebook later)
+- [ ] Principal real name + photo + message (About page, src/data/faculty.ts)
+- [ ] Real Vision/Mission text (src/app/about/page.tsx)
+- [ ] Real notices (src/data/notices.ts)
+- [ ] Home stats real numbers (currently placeholder 500+/25+)
+
 ## Photos available (in public/images/galary/)
 iqr.png (main logo), iqr0.png (alt logo), prayer.jpg, "2026 topper.jpg",
 medal.jpg, st.jpg, sport1.jpg, sport2.jpg, sport3.jpg, sport4.jpg,
