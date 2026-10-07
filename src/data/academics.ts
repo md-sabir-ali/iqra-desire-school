@@ -102,3 +102,36 @@ export const standApart = [
     description: "Regular tests and focused preparation to help students excel in Class 10 boards.",
   },
 ];
+
+
+/**
+ * CORE PILLARS — shown in an auto-rotating carousel on the home page.
+ * Each pillar pairs a short title with a supporting line.
+ * TODO: customize to your school's real values.
+ */
+export const corePillars = [
+  {
+    title: "Academic Excellence",
+    description:
+      "A strong, structured curriculum from Nursery to Class 10 that builds solid foundations and prepares students to excel in board examinations.",
+    image: "/images/galary/2026 topper.jpg",
+  },
+  {
+    title: "Values & Character",
+    description:
+      "We nurture honesty, discipline, respect, and good character — helping students grow into responsible, caring individuals.",
+    image: "/images/galary/prayer.jpg",
+  },
+  {
+    title: "Sports & Fitness",
+    description:
+      "Regular sports and physical activities build teamwork, confidence, and healthy habits that last a lifetime.",
+    image: "/images/galary/sport2.jpg",
+  },
+  {
+    title: "Co-Curricular Growth",
+    description:
+      "Cultural programmes, celebrations, and events give every child a stage to express themselves and discover new talents.",
+    image: "/images/galary/medal.jpg",
+  },
+];

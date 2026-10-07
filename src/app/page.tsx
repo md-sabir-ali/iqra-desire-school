@@ -14,6 +14,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { Section, SectionHeading } from "@/components/Section";
 import { NoticeCard } from "@/components/NoticeCard";
 import { PhotoBand } from "@/components/PhotoBand";
+import { PillarsCarousel } from "@/components/PillarsCarousel";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { stats, standApart } from "@/data/academics";
@@ -92,6 +93,19 @@ export default async function HomePage() {
             </div>
           </Reveal>
         </div>
+      </Section>
+
+      {/* Core Pillars carousel */}
+      <Section>
+        <SectionHeading
+          eyebrow="What We Stand For"
+          title="Our Core Pillars"
+          subtitle="The values and strengths that shape everything we do."
+          centered
+        />
+        <Reveal>
+          <PillarsCarousel />
+        </Reveal>
       </Section>
 
       {/* What makes us stand apart */}
