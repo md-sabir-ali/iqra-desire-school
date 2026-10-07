@@ -36,7 +36,7 @@ export function HeroSlider() {
             alt={slide.alt}
             fill
             priority={i === 0}
-            className="object-cover"
+            className={`object-cover ${i === current ? "animate-kenburns" : ""}`}
             sizes="100vw"
           />
           {/* Dark gradient so text is readable */}
