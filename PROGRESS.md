@@ -7,6 +7,52 @@
 - URL: https://iqra-desire-school.vercel.app
 - GitHub: https://github.com/md-sabir-ali/iqra-desire-school
 - Hosting: Vercel (free), auto-deploy on git push to `main`
+- NOTE: v2 animated version is now LIVE on main (merged 2026-10-08).
+
+## =========================================================
+## ★★★ PENDING BACKLOG — user's TODO list. Do ONE BY ONE. ★★★
+## (User adds points as he remembers. Keep appending here.)
+## =========================================================
+### P1. Admission enquiry form — make it actually work
+   - Right now form submits but DATA IS NOT SAVED / no notification. (static Phase 1)
+   - Plan: connect form so submissions reach the school.
+   - Chosen approach (recommended): EMAIL via Web3Forms (free, ~250/mo).
+     Needs: user to create free Web3Forms account → get "access key" → give to Kiro.
+     Target email: iqradesireenglishschool@gmail.com
+   - Optional also: WhatsApp notification. (A+B both possible)
+   - File: src/components/EnquiryForm.tsx + src/lib/api.ts (submitEnquiry) + flag enableOnlineEnquiry.
+
+### P2. Domain iqradesire.com
+   - Confirmed AVAILABLE to re-register (not owned now). PAID ~Rs 1,150/yr (.com).
+   - Recommended: Domain India (flat price, UPI, GST) OR GoDaddy (UPI, but renewal ~Rs1800 → buy 5 yrs).
+   - Cheapest w/ card: Cloudflare (~Rs780 flat).
+   - Decided: take .com NOW; add .edu.in LATER (needs school recognition docs).
+     Both can point to same Vercel site; later redirect .com → .edu.in for SEO.
+   - After buying: Vercel → Settings → Domains → add iqradesire.com + www;
+     set A record 76.76.21.21 + CNAME for www at registrar; wait DNS; free HTTPS.
+   - Then update src/config/site.ts `url` to https://iqradesire.com.
+
+### P3. Self-service content management (so user updates WITHOUT coding)
+   - User wants to add/change himself (phone, no-code, free):
+     * notices / announcements (e.g. "Admission Open")
+     * gallery photos (add/change)
+     * awards & achievements
+   - Recommended: Decap CMS (free) → admin login page at /admin.
+     (Alt: Google Sheet for notices; or Level 3 Supabase + admin dashboard.)
+   - NOTE: animation changes are code-level, NOT via CMS — Kiro does those.
+
+### P4. Real content polish (fill placeholders)
+   - Home stats show "0+/0+" placeholder for Students/Teachers — FIX (real nums or safe labels).
+   - Principal real name + photo + message (About page / src/data/faculty.ts).
+   - Real Vision / Mission text (src/app/about/page.tsx).
+   - Real notices (src/data/notices.ts).
+   - Best / professional photos (user to download from Facebook).
+
+### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
+
+## (user will add more points below as he remembers)
+## ---------------------------------------------------------
+
 
 ## School details (confirmed)
 - Name: Iqra Desire English School
