@@ -13,14 +13,16 @@
 ## ★★★ PENDING BACKLOG — user's TODO list. Do ONE BY ONE. ★★★
 ## (User adds points as he remembers. Keep appending here.)
 ## =========================================================
-### P1. Admission enquiry form — make it actually work
-   - Right now form submits but DATA IS NOT SAVED / no notification. (static Phase 1)
-   - Plan: connect form so submissions reach the school.
-   - Chosen approach (recommended): EMAIL via Web3Forms (free, ~250/mo).
-     Needs: user to create free Web3Forms account → get "access key" → give to Kiro.
-     Target email: iqradesireenglishschool@gmail.com
-   - Optional also: WhatsApp notification. (A+B both possible)
-   - File: src/components/EnquiryForm.tsx + src/lib/api.ts (submitEnquiry) + flag enableOnlineEnquiry.
+### P1. Admission enquiry form — ✅ DONE (2026-10-09)
+   - Form now EMAILS every enquiry via Web3Forms. Tested & working (user got the email).
+   - Web3Forms access key stored in src/config/site.ts `web3formsKey`:
+     6ed5b18c-6614-4e5e-b56f-467e2f3fc3ad
+   - Enquiries currently go to: mdsabirali.tech@gmail.com (user's own email, temporary).
+   - TODO later: when school Gmail (iqradesireenglishschool@gmail.com) access is available,
+     change the recipient in Web3Forms dashboard (no code change needed), OR make a new key.
+   - Free plan: 250 submissions/month.
+   - Code: submitEnquiry() in src/lib/api.ts POSTs to api.web3forms.com.
+   - (Optional future: also add WhatsApp notification.)
 
 ### P2. Domain iqradesire.com
    - Confirmed AVAILABLE to re-register (not owned now). PAID ~Rs 1,150/yr (.com).
