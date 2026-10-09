@@ -25,14 +25,18 @@
    - (Optional future: also add WhatsApp notification.)
 
 ### P2. Domain iqradesire.com
-   - Confirmed AVAILABLE to re-register (not owned now). PAID ~Rs 1,150/yr (.com).
-   - Recommended: Domain India (flat price, UPI, GST) OR GoDaddy (UPI, but renewal ~Rs1800 → buy 5 yrs).
-   - Cheapest w/ card: Cloudflare (~Rs780 flat).
-   - Decided: take .com NOW; add .edu.in LATER (needs school recognition docs).
+### P2. Domain iqradesire.com — 🟡 IN PROGRESS (purchased 2026-10-09)
+   - ✅ BOUGHT at Domain India for 5 years (~Rs 5,750 + GST). Registrar: Domain India.
+     (user has account email+password at domainindia.com — needed for DNS settings)
+   - Decided: .com NOW; add .edu.in LATER (needs school recognition docs).
      Both can point to same Vercel site; later redirect .com → .edu.in for SEO.
-   - After buying: Vercel → Settings → Domains → add iqradesire.com + www;
-     set A record 76.76.21.21 + CNAME for www at registrar; wait DNS; free HTTPS.
-   - Then update src/config/site.ts `url` to https://iqradesire.com.
+   - ⏭ NEXT: connect to Vercel —
+     1. Vercel → project → Settings → Domains → add "iqradesire.com" and "www.iqradesire.com".
+     2. Vercel shows DNS records. Standard: A record @ = 76.76.21.21 ; CNAME www = cname.vercel-dns.com
+        (use EXACT values Vercel shows). Set these in Domain India DNS manager.
+     3. Wait DNS propagation (10 min - few hrs). Vercel auto-issues free HTTPS.
+     4. Update src/config/site.ts `url` to https://iqradesire.com (SEO/OG).
+   - Hosting stays FREE on Vercel.
 
 ### P3. Self-service content management (so user updates WITHOUT coding)
    - User wants to add/change himself (phone, no-code, free):
