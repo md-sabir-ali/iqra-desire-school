@@ -31,10 +31,14 @@
    - Decided: .com NOW; add .edu.in LATER (needs school recognition docs).
      Both can point to same Vercel site; later redirect .com → .edu.in for SEO.
    - ⏭ NEXT: connect to Vercel —
-     1. Vercel → project → Settings → Domains → add "iqradesire.com" and "www.iqradesire.com".
-     2. Vercel shows DNS records. Standard: A record @ = 76.76.21.21 ; CNAME www = cname.vercel-dns.com
-        (use EXACT values Vercel shows). Set these in Domain India DNS manager.
-     3. Wait DNS propagation (10 min - few hrs). Vercel auto-issues free HTTPS.
+     1. ✅ DONE: added iqradesire.com + www.iqradesire.com in Vercel (both show "Invalid
+        Configuration" until DNS is set — normal).
+     2. EXACT DNS values Vercel assigned (set these in Domain India DNS manager):
+        - A record:   Name = @    Value = 216.198.79.1
+        - CNAME:      Name = www  Value = c9c01c43863d31ca.vercel-dns-017.com
+        (legacy also works: A 76.76.21.21 / CNAME cname.vercel-dns.com, but use the above.)
+     3. ⏭ IN PROGRESS: adding these records in Domain India DNS Management for iqradesire.com.
+        Delete/replace any existing default A/parking record. Then click Refresh in Vercel.
      4. Update src/config/site.ts `url` to https://iqradesire.com (SEO/OG).
    - Hosting stays FREE on Vercel.
 
