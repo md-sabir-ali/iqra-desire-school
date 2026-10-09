@@ -49,10 +49,8 @@ export async function getClassLevels(): Promise<ClassLevel[]> {
 
 /**
  * Submit an admission enquiry.
- * Phase 1: validates and logs (no backend) — returns a friendly message that
- * tells the user to also call/WhatsApp. The form still works for the user.
- * Phase 2: when enableOnlineEnquiry is true, POST to an API route that saves
- * to the database and/or sends an email.
+ * If a Web3Forms key is set in siteConfig, the enquiry is emailed to the school.
+ * If no key is set, it falls back to a friendly thank-you (no data sent).
  */
 export async function submitEnquiry(
   input: EnquiryInput
@@ -65,16 +63,51 @@ export async function submitEnquiry(
     return { ok: false, message: "Please enter a valid 10-digit mobile number." };
   }
 
-  if (siteConfig.features.enableOnlineEnquiry) {
-    // Phase 2 example:
-    // const res = await fetch("/api/enquiry", { method: "POST", body: JSON.stringify(input) });
-    // return res.ok ? { ok: true, message: "..." } : { ok: false, message: "..." };
+  // Send to Web3Forms (emails the school) when a key is configured.
+  if (siteConfig.web3formsKey) {
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: siteConfig.web3formsKey,
+          subject: `New Admission Enquiry — ${input.studentName} (${input.className})`,
+          from_name: `${siteConfig.shortName} Website`,
+          // Fields shown in the email:
+          "Parent / Guardian": input.parentName,
+          "Student Name": input.studentName,
+          "Class Seeking": input.className,
+          "Mobile": input.mobile,
+          "Email": input.email || "(not provided)",
+          "Message": input.message || "(none)",
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        return {
+          ok: true,
+          message:
+            "Thank you! Your enquiry has been sent to the school. Our team will contact you soon.",
+        };
+      }
+      return {
+        ok: false,
+        message:
+          "Sorry, we could not send your enquiry right now. Please call or WhatsApp us instead.",
+      };
+    } catch {
+      return {
+        ok: false,
+        message:
+          "Network issue — please check your connection, or call/WhatsApp us directly.",
+      };
+    }
   }
 
-  // Phase 1: no backend yet.
+  // Fallback: no key configured yet — don't lose the user, nudge to call.
   if (typeof window !== "undefined") {
     // eslint-disable-next-line no-console
-    console.log("Enquiry (Phase 1, not sent to a server):", input);
+    console.log("Enquiry (no Web3Forms key set, not sent):", input);
   }
   return {
     ok: true,

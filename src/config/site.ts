@@ -44,6 +44,14 @@ export const siteConfig = {
     youtube: "",
   },
 
+  /**
+   * ADMISSION FORM — Web3Forms access key.
+   * Get a FREE key at https://web3forms.com (enter the school email, copy the key).
+   * Paste the key below. The form then emails every enquiry to that address.
+   * Keep empty "" to disable live sending (form just shows a thank-you message).
+   */
+  web3formsKey: "6ed5b18c-6614-4e5e-b56f-467e2f3fc3ad",
+
   // Base URL (set after deploy, used for SEO/OpenGraph)
   // TODO: replace with your real Vercel/custom domain
   url: "https://iqra-desire-school.vercel.app",
