@@ -44,11 +44,58 @@
    - NOTE: animation changes are code-level, NOT via CMS — Kiro does those.
 
 ### P4. Real content polish (fill placeholders)
-   - Home stats show "0+/0+" placeholder for Students/Teachers — FIX (real nums or safe labels).
-   - Principal real name + photo + message (About page / src/data/faculty.ts).
-   - Real Vision / Mission text (src/app/about/page.tsx).
-   - Real notices (src/data/notices.ts).
-   - Best / professional photos (user to download from Facebook).
+   Home stats show "0+/0+" placeholder — FIX soon (real nums or safe labels).
+
+   ===== DETAILS TO COLLECT FROM SCHOOL (give to Kiro to fill the site) =====
+   Priority order (most impact first): PHOTOS → Principal → Stats → Vision/Mission → Toppers.
+
+   1. BASIC INFO
+      [ ] Established year (confirm 2013 from logo)
+      [ ] Board affiliation/recognition (BSEB/CBSE? recognition no.) — needed for .edu.in & trust
+      [ ] UDISE code / official school ID (optional)
+   2. STATS (home page numbers — currently "0+")
+      [ ] No. of students (approx)
+      [ ] No. of teachers/staff (approx)
+      [ ] Any other proud number (classrooms etc.)
+   3. PRINCIPAL / HEAD
+      [ ] Principal name
+      [ ] Principal photo (clear)
+      [ ] Principal short message (2-4 lines)
+   4. ABOUT (About page)
+      [ ] School history/story (2-3 lines)
+      [ ] Vision (1 line)
+      [ ] Mission (1 line)
+      [ ] Key facilities (computer lab? library? playground? bus? smart classes?)
+   5. TEACHERS/STAFF (optional)
+      [ ] Few senior teachers: name + photo + subject
+   6. ACADEMICS
+      [ ] Subjects taught
+      [ ] School timings
+      [ ] Special teaching methods/activities
+   7. ADMISSION INFO
+      [ ] Admission process + documents required
+      [ ] Fees structure (put on site OR keep "ask office")
+      [ ] When admissions open
+   8. PHOTOS (biggest impact for "live" feel)
+      [ ] School building (exterior)
+      [ ] Classrooms
+      [ ] Students studying / activities
+      [ ] Events (annual function, sports day, celebrations)
+      [ ] Awards/toppers photos
+      [ ] Teachers/staff group photo
+   9. ACHIEVEMENTS / TOPPERS
+      [ ] Board toppers: name + marks + photo
+      [ ] Any school awards/prizes
+   10. CONTACT / SOCIAL (pending)
+      [ ] Access to school Gmail iqradesireenglishschool@gmail.com
+          (enquiries currently go to user's personal mdsabirali.tech@gmail.com)
+      [ ] Instagram / YouTube links (if any)
+      [ ] Exact Google Maps location pin
+   ==========================================================================
+
+   Files to fill: src/data/faculty.ts (principal/teachers), src/app/about/page.tsx
+   (history/vision/mission), src/app/page.tsx (stats), src/data/notices.ts,
+   src/data/gallery.ts + public/images/galary/ (photos), src/data/academics.ts.
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
