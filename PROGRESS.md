@@ -37,8 +37,25 @@
         - A record:   Name = @    Value = 216.198.79.1
         - CNAME:      Name = www  Value = c9c01c43863d31ca.vercel-dns-017.com
         (legacy also works: A 76.76.21.21 / CNAME cname.vercel-dns.com, but use the above.)
-     3. ⏭ IN PROGRESS: adding these records in Domain India DNS Management for iqradesire.com.
-        Delete/replace any existing default A/parking record. Then click Refresh in Vercel.
+     3. 🔴 BLOCKED (2026-10-09): Could NOT set DNS at Domain India yet.
+        - "Switch to Free DNS" button did nothing (glitch).
+        - Nameserver change to Vercel FAILED: "Could not update the nameservers"
+          (likely because domain was registered the same day — 24-48h add-grace lock).
+        - ✅ Raised Domain India SUPPORT TICKET #TK-905590 — waiting for their team.
+
+   ⏭ WHEN SUPPORT RESPONDS / lock clears — use EITHER method (both end at same result):
+     METHOD A (nameservers — preferred, Vercel auto-manages everything):
+        Domain India → iqradesire.com → Nameservers tab → set to exactly:
+           ns1.vercel-dns.com
+           ns2.vercel-dns.com
+        (remove the 4 domainindia.net ones). Then wait propagation.
+     METHOD B (DNS records — if staying on Domain India nameservers):
+        Domain India → DNS tab → add:
+           A     @    216.198.79.1
+           CNAME www  c9c01c43863d31ca.vercel-dns-017.com
+     After either: in Vercel → Domains → click "Refresh" until green/Valid.
+     Then update src/config/site.ts `url` to https://iqradesire.com and push.
+   - Website meanwhile LIVE at iqra-desire-school.vercel.app (nothing broken).
      4. Update src/config/site.ts `url` to https://iqradesire.com (SEO/OG).
    - Hosting stays FREE on Vercel.
 
