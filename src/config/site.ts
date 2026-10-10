@@ -52,9 +52,8 @@ export const siteConfig = {
    */
   web3formsKey: "6ed5b18c-6614-4e5e-b56f-467e2f3fc3ad",
 
-  // Base URL (set after deploy, used for SEO/OpenGraph)
-  // TODO: replace with your real Vercel/custom domain
-  url: "https://iqra-desire-school.vercel.app",
+  // Base URL (used for SEO/OpenGraph). Live on custom domain.
+  url: "https://iqradesire.com",
 
   /**
    * FEATURE FLAGS
