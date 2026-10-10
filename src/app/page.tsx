@@ -31,6 +31,9 @@ const iconMap: Record<string, LucideIcon> = {
   GraduationCap,
 };
 
+// Re-fetch CMS content (notices/gallery) at most once per 60s (ISR).
+export const revalidate = 60;
+
 export default async function HomePage() {
   const notices = (await getNotices()).slice(0, 3);
   const gallery = (await getGalleryItems()).slice(0, 6);

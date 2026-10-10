@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: `Latest notices, news, and announcements from ${siteConfig.name}.`,
 };
 
+// Re-fetch CMS content at most once per 60s (ISR). New notices appear within a minute.
+export const revalidate = 60;
+
 export default async function NoticesPage() {
   const notices = await getNotices();
 

@@ -2,9 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // Phase 2: add image CDN domains here (e.g. Cloudinary).
-    // remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }]
-    remotePatterns: [],
+    // Allow Sanity's image CDN (gallery / achievement photos uploaded via /admin).
+    remotePatterns: [
+      { protocol: "https", hostname: "cdn.sanity.io" },
+    ],
   },
 };
 

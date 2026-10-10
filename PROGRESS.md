@@ -65,14 +65,31 @@
      4. Update src/config/site.ts `url` to https://iqradesire.com (SEO/OG).
    - Hosting stays FREE on Vercel.
 
-### P3. Self-service content management (so user updates WITHOUT coding)
+### P3. Self-service content management — 🟡 IN PROGRESS (Sanity.io chosen 2026-10-10)
    - User wants to add/change himself (phone, no-code, free):
      * notices / announcements (e.g. "Admission Open")
      * gallery photos (add/change)
      * awards & achievements
-   - Recommended: Decap CMS (free) → admin login page at /admin.
-     (Alt: Google Sheet for notices; or Level 3 Supabase + admin dashboard.)
-   - NOTE: animation changes are code-level, NOT via CMS — Kiro does those.
+   - DECISION: use **Sanity.io** (free tier, big). Reasons: reliable (not a Google
+     "publish-to-web" jugaad), great mobile editor, IMAGES upload built-in (CDN),
+     fits our src/lib/api.ts abstraction (only change inside getNotices()/etc.).
+     (Rejected: Google Sheets = fragile/undocumented; Decap = OAuth maintenance pain;
+      Supabase+custom admin = too much work now, keep for P5.)
+   - Reference site St. Mathews (stmathewsacademy.edu.in) = WordPress + agency (PAID).
+     We give the SAME self-service capability but FREE + fast via Sanity.
+   - NOTE: animation/design changes stay code-level — Kiro does those, NOT via CMS.
+
+   PLAN (Kiro leads; user does only the 2 account steps):
+     Step 1 (USER): create free Sanity account at sanity.io (Google login).
+     Step 2 (KIRO): add Sanity Studio + schemas (notice, achievement, galleryItem)
+                    inside the repo at /studio (or embedded at /admin route).
+     Step 3 (USER): give Kiro the projectId + dataset name (+ a read token if needed).
+     Step 4 (KIRO): wire src/lib/api.ts getNotices()/getGalleryItems()/achievements
+                    to fetch from Sanity (ISR revalidate ~60s). Keep static fallback.
+     Step 5 (KIRO): build + deploy; write user a short "how to add a notice from phone".
+   - Env vars needed in Vercel later: NEXT_PUBLIC_SANITY_PROJECT_ID, DATASET, (token).
+   - ✅ Sanity account: mdsabirali.tech@gmail.com | projectId = hwulcwab | dataset = production
+   >>> RESUME: waiting for user to finish Step 1 (Sanity account + projectId). <<<
 
 ### P4. Real content polish (fill placeholders)
    Home stats show "0+/0+" placeholder — FIX soon (real nums or safe labels).

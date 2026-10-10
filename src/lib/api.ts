@@ -14,6 +14,7 @@ import { galleryItems as staticGallery } from "@/data/gallery";
 import { faculty as staticFaculty } from "@/data/faculty";
 import { classLevels as staticClasses } from "@/data/academics";
 import { siteConfig } from "@/config/site";
+import { fetchNotices, fetchGallery } from "@/sanity/fetch";
 import type {
   Notice,
   GalleryItem,
@@ -24,7 +25,20 @@ import type {
 } from "@/lib/types";
 
 export async function getNotices(): Promise<Notice[]> {
-  // Phase 2: if (siteConfig.features.enableDatabase) return db.notices.findMany(...)
+  // Prefer Sanity CMS (user-managed). Fall back to static data if the CMS is
+  // empty or unreachable, so the site never breaks.
+  try {
+    const fromCms = await fetchNotices();
+    if (fromCms.length > 0) {
+      return fromCms.sort((a, b) => {
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+    }
+  } catch {
+    // ignore and use static fallback below
+  }
   const sorted = [...staticNotices].sort((a, b) => {
     if (a.pinned && !b.pinned) return -1;
     if (!a.pinned && b.pinned) return 1;
@@ -34,7 +48,13 @@ export async function getNotices(): Promise<Notice[]> {
 }
 
 export async function getGalleryItems(): Promise<GalleryItem[]> {
-  // Phase 2: fetch from DB / Cloudinary.
+  // Prefer Sanity CMS; fall back to local static photos.
+  try {
+    const fromCms = await fetchGallery();
+    if (fromCms.length > 0) return fromCms;
+  } catch {
+    // ignore and use static fallback below
+  }
   return staticGallery;
 }
 

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: `Photo and video gallery of ${siteConfig.name} — events, activities, and campus life.`,
 };
 
+// Re-fetch CMS photos at most once per 60s (ISR).
+export const revalidate = 60;
+
 export default async function GalleryPage() {
   const items = await getGalleryItems();
 
