@@ -24,7 +24,13 @@
    - Code: submitEnquiry() in src/lib/api.ts POSTs to api.web3forms.com.
    - (Optional future: also add WhatsApp notification.)
 
-### P2. Domain iqradesire.com
+### P2. Domain iqradesire.com — ✅ DONE & LIVE (2026-10-10)
+   - 🎉 SITE IS LIVE at https://iqradesire.com (and www.iqradesire.com) over HTTPS.
+   - Domain India support set nameservers to ns1/ns2.vercel-dns.com; DNS propagated.
+     Verified: NS=vercel-dns, A @ -> 216.198.79.1 (Vercel). www -> Vercel too.
+   - ✅ Updated src/config/site.ts `url` to https://iqradesire.com; committed+pushed (main).
+   - FUTURE (optional): add .edu.in later (needs recognition docs), redirect .com->.edu.in.
+   - (history below kept for reference)
 ### P2. Domain iqradesire.com — 🟡 IN PROGRESS (purchased 2026-10-09)
    - ✅ BOUGHT at Domain India for 5 years (~Rs 5,750 + GST). Registrar: Domain India.
      (user has account email+password at domainindia.com — needed for DNS settings)
