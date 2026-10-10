@@ -89,7 +89,31 @@
      Step 5 (KIRO): build + deploy; write user a short "how to add a notice from phone".
    - Env vars needed in Vercel later: NEXT_PUBLIC_SANITY_PROJECT_ID, DATASET, (token).
    - ✅ Sanity account: mdsabirali.tech@gmail.com | projectId = hwulcwab | dataset = production
-   >>> RESUME: waiting for user to finish Step 1 (Sanity account + projectId). <<<
+   - ✅ CORS added in Sanity (iqradesire.com, www, localhost:3000, allow-credentials).
+   - ✅ BUILT & LIVE: embedded Sanity Studio at https://iqradesire.com/admin (login w/ Google).
+       Schemas: notice, achievement (topper), galleryItem (photo upload w/ CDN).
+       Code: src/sanity/* , sanity.config.ts , src/app/admin/[[...tool]]/page.tsx .
+       Wiring: src/lib/api.ts getNotices()/getGalleryItems() fetch Sanity, else static fallback.
+       ISR revalidate=60 on /, /notices, /gallery. next.config allows cdn.sanity.io images.
+       robots.ts disallows /admin.
+   - ✅ TESTED by user: login + publish a notice worked. Content shows within ~1 min.
+
+   ⚠️ OPEN DECISION (user paused here 2026-10-10, will resume):
+      Current behaviour (by design): if CMS has >=1 notice, site shows ONLY CMS notices;
+      if CMS empty, shows the 4 static demo notices. So when user published 1 notice, the
+      demo ones disappeared. User expected: "only the thing I edit changes, rest stays".
+      Explained options:
+        (A) CMS-only (recommended): demo was just a placeholder; user adds all real notices
+            in CMS. Clean + full control. Optionally SEED the 3-4 demo notices into Sanity
+            once so user can edit/delete them (best of both). <-- likely next action.
+        (B) Always merge demo + CMS: rejected (demo notices are fake/hardcoded, can't be
+            deleted from CMS, confusing).
+      >>> RESUME P3: ask user A or B. If A+seed: create the existing src/data/notices.ts
+          items as Sanity documents (one-time seed) so they're editable in /admin.
+          Then P3 = DONE. Also same pattern available for gallery/achievements if wanted. <<<
+   - GUIDE for user (how to add a notice): go to /admin -> login Google -> "Notice" -> "+"
+     -> fill Title/Date/Category/Details, toggle Pin if needed -> PUBLISH (not just save)
+     -> appears on site within ~1 min.
 
 ### P4. Real content polish (fill placeholders)
    Home stats show "0+/0+" placeholder — FIX soon (real nums or safe labels).
