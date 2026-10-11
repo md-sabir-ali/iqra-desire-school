@@ -139,3 +139,49 @@ export const corePillars = [
     image: "/images/galary/medal.jpg",
   },
 ];
+
+
+/**
+ * OUR FACILITIES — shown in a professional icon-card grid on the home page.
+ * Icon names map to lucide-react icons in the page component.
+ * NOTE: descriptions are kept general & true (no unverified claims like exact
+ * book counts). TODO: when the school confirms details, enrich these lines.
+ */
+export const facilities = [
+  {
+    icon: "Monitor",
+    title: "Computer Lab",
+    description:
+      "A dedicated computer lab that gives students hands-on digital skills from an early age.",
+  },
+  {
+    icon: "Library",
+    title: "Library",
+    description:
+      "A well-stocked library that encourages reading, curiosity, and a lifelong love for books.",
+  },
+  {
+    icon: "Trees",
+    title: "Playground",
+    description:
+      "Open, safe play space for sports, games, and the physical development of every child.",
+  },
+  {
+    icon: "MonitorPlay",
+    title: "Smart Classes",
+    description:
+      "Smart classrooms that make lessons interactive, visual, and easier to understand.",
+  },
+  {
+    icon: "Bus",
+    title: "Transport / Bus",
+    description:
+      "Safe and reliable school transport to bring students to and from school with ease.",
+  },
+  {
+    icon: "FlaskConical",
+    title: "Science Lab",
+    description:
+      "A science lab for practical, experiment-based learning that brings concepts to life.",
+  },
+];
