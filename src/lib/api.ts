@@ -13,7 +13,6 @@ import { notices as staticNotices } from "@/data/notices";
 import { galleryItems as staticGallery } from "@/data/gallery";
 import { faculty as staticFaculty } from "@/data/faculty";
 import { classLevels as staticClasses } from "@/data/academics";
-import { siteConfig } from "@/config/site";
 import { fetchNotices, fetchGallery } from "@/sanity/fetch";
 import type {
   Notice,
@@ -69,13 +68,14 @@ export async function getClassLevels(): Promise<ClassLevel[]> {
 
 /**
  * Submit an admission enquiry.
- * If a Web3Forms key is set in siteConfig, the enquiry is emailed to the school.
- * If no key is set, it falls back to a friendly thank-you (no data sent).
+ * Posts to our own server route (/api/enquiry) which — on the server —
+ * saves the lead to Sanity CMS (permanent record in /admin) AND emails the
+ * school via Web3Forms. The Sanity write token stays server-side only.
  */
 export async function submitEnquiry(
   input: EnquiryInput
 ): Promise<EnquiryResult> {
-  // Basic validation (shared safeguard regardless of backend)
+  // Client-side quick validation (server validates again).
   if (!input.parentName || !input.studentName || !input.mobile) {
     return { ok: false, message: "Please fill in all required fields." };
   }
@@ -83,55 +83,19 @@ export async function submitEnquiry(
     return { ok: false, message: "Please enter a valid 10-digit mobile number." };
   }
 
-  // Send to Web3Forms (emails the school) when a key is configured.
-  if (siteConfig.web3formsKey) {
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: siteConfig.web3formsKey,
-          subject: `New Admission Enquiry — ${input.studentName} (${input.className})`,
-          from_name: `${siteConfig.shortName} Website`,
-          // Fields shown in the email:
-          "Parent / Guardian": input.parentName,
-          "Student Name": input.studentName,
-          "Class Seeking": input.className,
-          "Mobile": input.mobile,
-          "Email": input.email || "(not provided)",
-          "Message": input.message || "(none)",
-        }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        return {
-          ok: true,
-          message:
-            "Thank you! Your enquiry has been sent to the school. Our team will contact you soon.",
-        };
-      }
-      return {
-        ok: false,
-        message:
-          "Sorry, we could not send your enquiry right now. Please call or WhatsApp us instead.",
-      };
-    } catch {
-      return {
-        ok: false,
-        message:
-          "Network issue — please check your connection, or call/WhatsApp us directly.",
-      };
-    }
+  try {
+    const res = await fetch("/api/enquiry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    const data = (await res.json()) as EnquiryResult;
+    return data;
+  } catch {
+    return {
+      ok: false,
+      message:
+        "Network issue — please check your connection, or call/WhatsApp us directly.",
+    };
   }
-
-  // Fallback: no key configured yet — don't lose the user, nudge to call.
-  if (typeof window !== "undefined") {
-    // eslint-disable-next-line no-console
-    console.log("Enquiry (no Web3Forms key set, not sent):", input);
-  }
-  return {
-    ok: true,
-    message:
-      "Thank you! Your enquiry has been received. Our team will contact you soon. For a quick response, you can also call or WhatsApp us.",
-  };
 }

@@ -44,6 +44,8 @@ export interface EnquiryInput {
   mobile: string;
   email: string;
   message?: string;
+  /** Honeypot anti-spam field — must stay empty for real users. */
+  company?: string;
 }
 
 export interface EnquiryResult {

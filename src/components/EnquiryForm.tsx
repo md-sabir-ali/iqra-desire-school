@@ -28,6 +28,7 @@ const emptyForm: EnquiryInput = {
   mobile: "",
   email: "",
   message: "",
+  company: "", // honeypot — must stay empty
 };
 
 export function EnquiryForm() {
@@ -71,7 +72,7 @@ export function EnquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card space-y-4">
+    <form onSubmit={handleSubmit} className="card relative space-y-4">
       {status === "error" && (
         <div className="flex items-center gap-2 rounded-lg bg-rose-50 px-4 py-3 text-sm text-rose-700">
           <AlertCircle className="h-4 w-4 shrink-0" />
@@ -149,6 +150,21 @@ export function EnquiryForm() {
           placeholder="Any question or note for us"
         />
       </Field>
+
+      {/* Honeypot: hidden from real users & screen readers; bots fill it, and
+          the server then silently drops the submission. */}
+      <div className="absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label>
+          Company
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={form.company}
+            onChange={(e) => update("company", e.target.value)}
+          />
+        </label>
+      </div>
 
       <button type="submit" className="btn-primary w-full" disabled={status === "submitting"}>
         {status === "submitting" ? "Submitting..." : "Submit Enquiry"}
