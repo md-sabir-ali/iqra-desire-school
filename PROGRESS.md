@@ -281,6 +281,33 @@
       proper h1s, all 7 content pages have SEO metadata. Hero already optimised.
    (NOTE for user: Sanity CMS still has its separate free "trial popup" — just "Maybe later".)
 
+### P4d. 360° Tier-1: lead capture + analytics + spam guard — ✅ DONE (code) (2026-10-11)
+   All free. Built, 0-error build, pushed (commit 5db1404), /api/enquiry verified live.
+   1. ENQUIRIES SAVED TO CMS (no lead lost) — new `enquiry` schema
+      (src/sanity/schemas/enquiryType.ts). New SECURE server route
+      src/app/api/enquiry/route.ts: validates, writes to Sanity (permanent record in
+      /admin → "Admission Enquiry"), AND emails via Web3Forms. Success if EITHER channel
+      works. submitEnquiry() (src/lib/api.ts) now POSTs to /api/enquiry — the Sanity
+      write token stays SERVER-SIDE only (never in browser). Each enquiry has a
+      "Contacted / Handled?" toggle for the office to track follow-ups.
+   2. HONEYPOT SPAM GUARD — hidden `company` field in EnquiryForm; server silently drops
+      any submission that fills it. VERIFIED live (bot POST returned ok but was not saved).
+   3. VERCEL ANALYTICS — @vercel/analytics@2.0.1 + <Analytics/> in layout. Free visitor
+      insights (page views, top pages, referrers).
+
+   🔴🔴 TWO USER ACTIONS REQUIRED to fully activate (both FREE):
+     A. SANITY WRITE TOKEN (so enquiries actually SAVE to CMS — else only email works):
+        1. sanity.io/manage → project "Iqra Desire School" → API → Tokens → Add API token.
+        2. Name: "website-write", Permission: **Editor**. Copy the token (sk...).
+        3. Vercel → project → Settings → Environment Variables → add:
+             Name  = SANITY_WRITE_TOKEN
+             Value = <the token>
+           Apply to Production (+ Preview). Save, then Redeploy (Deployments → ⋯ → Redeploy).
+        (Token lives only in Vercel server env — never committed, never in browser.)
+     B. ENABLE VERCEL ANALYTICS: Vercel → project → Analytics tab → Enable (free Hobby).
+   After A: test the form once; the enquiry should appear in /admin → "Admission Enquiry".
+   Until A is done, enquiries still EMAIL as before (nothing broken).
+
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
 ## (user will add more points below as he remembers)
