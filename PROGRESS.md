@@ -3,6 +3,16 @@
 > Kal yeh file Kiro ko padhne ko bolna: "PROGRESS.md padho aur aage badho".
 > Isi se sab context wapas aa jayega.
 
+## ⏭️ RESUME NEXT SESSION (last worked 2026-10-11 evening)
+- Everything built so far is DONE, committed & pushed to main, verified LIVE. Git clean.
+- NEXT PLANNED: **Tier 2** (free, no data needed): Academics page visual upgrade
+  (St.-Mathews-style level cards) + a sticky/prominent "Apply Now" CTA.
+- PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
+  (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry; (c) later: fill real
+  school data (principal, stats numbers, facilities details, vision/mission, photos) —
+  see P4 list. SANITY_WRITE_TOKEN env var is already set in Vercel (enquiry→CMS works).
+- Reminder: Sanity "trial popup" = just click "Maybe later" (free plan fine).
+
 ## Live site
 - URL: https://iqra-desire-school.vercel.app
 - GitHub: https://github.com/md-sabir-ali/iqra-desire-school
