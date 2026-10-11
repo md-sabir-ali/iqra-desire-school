@@ -141,8 +141,25 @@
      -> fill Title/Date/Category/Details, toggle Pin if needed -> PUBLISH (not just save)
      -> appears on site within ~1 min.
 
-### P4. Real content polish (fill placeholders)
-   Home stats show "0+/0+" placeholder — FIX soon (real nums or safe labels).
+### P4. Real content polish (fill placeholders) — 🟡 IN PROGRESS
+   ✅ (2026-10-11) Home stats FIXED: removed FAKE "500+ Students / 25+ Teachers".
+      Now shows only TRUE values: Established 2013, Classes "Nursery–10",
+      Medium "English", 100% Caring Support. (src/data/academics.ts `stats` +
+      render in src/app/page.tsx handles number count-up vs plain text.)
+      ⏳ PENDING — WHEN REAL DATA ARRIVES: replace the two text stats back with real
+         animated numbers, e.g. { value: 500, suffix: "+", label: "Students" } and
+         { value: 25, suffix: "+", label: "Teachers" }. Just need real approx counts.
+
+   Still TODO in P4 (fill with real content when school provides it):
+     - Principal: real name + photo + message (src/data/faculty.ts — currently
+       "Principal Name" placeholder + /images/placeholder.svg).
+     - Teachers: real names/photos/subjects (src/data/faculty.ts f2,f3 placeholders).
+     - About page: real school story + Vision + Mission (src/app/about/page.tsx — generic
+       TODO text) + real campus image (currently placeholder.svg).
+     - Enquiry email: switch recipient from personal mdsabirali.tech@gmail.com to school
+       Gmail when access available (Web3Forms dashboard, no code change).
+     - Social: Instagram / YouTube links if any (src/config/site.ts social{}).
+     - Contact: verify/replace exact Google Maps pin.
 
    ===== DETAILS TO COLLECT FROM SCHOOL (give to Kiro to fill the site) =====
    Priority order (most impact first): PHOTOS → Principal → Stats → Vision/Mission → Toppers.
