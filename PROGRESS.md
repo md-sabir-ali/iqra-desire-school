@@ -159,17 +159,33 @@
       ⏳ PENDING — WHEN REAL DATA ARRIVES: user will confirm which facilities actually
          exist (add/remove) and give specifics (e.g. library book count, lab details,
          smart-class count) so Kiro can enrich the descriptions.
+   ✅ (2026-10-11) Principal's Message section REDESIGNED on About page — now a
+      professional St.-Mathews-style card (navy bg + gold accents, rounded photo
+      frame, quote icon, centered). Removed the amateur "Principal Name" / placeholder.svg.
+      SMART PLACEHOLDER: faculty.ts entry f1 now has EMPTY fields; UI auto-handles —
+      shows "Our Principal" + a clean general welcome message + graduation-cap icon
+      until real data is filled. Added optional `qualifications` to FacultyMember type.
+      Removed the 2 fake "Teacher Name" entries (f2,f3 — they were never rendered).
+      Decided (2026-10-11): keep the SHORT general message for now (no name yet);
+      a richer "Option B" welcome draft was offered but user chose to keep old.
+      ⏳ WHEN REAL DATA ARRIVES — just fill src/data/faculty.ts f1:
+         name (real Principal name) → auto-shows instead of "Our Principal"
+         photo "/images/faculty/principal.jpg" → auto-replaces the icon
+         qualifications "M.A., B.Ed." → auto-shows
+         bio (real 2–4 line message) → auto-replaces the generic message
+      (No code change needed — section fills itself.)
 
    Still TODO in P4 (fill with real content when school provides it):
-     - Principal: real name + photo + message (src/data/faculty.ts — currently
-       "Principal Name" placeholder + /images/placeholder.svg).
-     - Teachers: real names/photos/subjects (src/data/faculty.ts f2,f3 placeholders).
+     - Principal: real name + photo + qualifications + message (src/data/faculty.ts f1 —
+       section redesigned & ready; just fill the empty fields).
      - About page: real school story + Vision + Mission (src/app/about/page.tsx — generic
        TODO text) + real campus image (currently placeholder.svg).
      - Enquiry email: switch recipient from personal mdsabirali.tech@gmail.com to school
        Gmail when access available (Web3Forms dashboard, no code change).
      - Social: Instagram / YouTube links if any (src/config/site.ts social{}).
      - Contact: verify/replace exact Google Maps pin.
+     - Stats: real Students/Teachers counts (currently honest text placeholders).
+     - Facilities: confirm which actually exist + specifics to enrich descriptions.
 
    ===== DETAILS TO COLLECT FROM SCHOOL (give to Kiro to fill the site) =====
    Priority order (most impact first): PHOTOS → Principal → Stats → Vision/Mission → Toppers.
