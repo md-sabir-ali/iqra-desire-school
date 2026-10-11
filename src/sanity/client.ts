@@ -6,13 +6,16 @@ import { apiVersion, dataset, projectId } from "./env";
 
 /**
  * READ-ONLY Sanity client used by the website to fetch published content.
- * useCdn: true => fast, cached reads from Sanity's CDN (perfect for a public site).
+ * useCdn: false => always read the freshest data from Sanity's live API.
+ * Our pages use Next.js ISR (export const revalidate = 60), so responses are
+ * still cached for ~60s at the page level. That gives fast pages AND makes
+ * edits from /admin reliably appear within ~1 minute (no stale CDN layer).
  */
 export const sanityClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false,
 });
 
 // Helper to turn a Sanity image reference into a URL.

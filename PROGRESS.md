@@ -65,7 +65,7 @@
      4. Update src/config/site.ts `url` to https://iqradesire.com (SEO/OG).
    - Hosting stays FREE on Vercel.
 
-### P3. Self-service content management — 🟡 IN PROGRESS (Sanity.io chosen 2026-10-10)
+### P3. Self-service content management — ✅ DONE (2026-10-11)
    - User wants to add/change himself (phone, no-code, free):
      * notices / announcements (e.g. "Admission Open")
      * gallery photos (add/change)
@@ -98,6 +98,27 @@
        robots.ts disallows /admin.
    - ✅ TESTED by user: login + publish a notice worked. Content shows within ~1 min.
 
+   ✅ RESOLVED (2026-10-11): Chose Option A (CMS-only + seed). As tech-lead decided
+      and user agreed. Did a one-time SEED of the existing local content into Sanity:
+        - 12 gallery photos (from public/images/galary/) uploaded to Sanity CDN
+        - 4 notices (from src/data/notices.ts) created as editable documents
+      Script: scripts/seed-sanity.mjs (idempotent — fixed _id seed-gallery-g1..g12 /
+      seed-notice-n1..n4, uses createOrReplace, token via env SANITY_WRITE_TOKEN only,
+      NOT committed). Dataset now: 13 galleryItem (12 seeded + 1 old "test"), 5 notice
+      (4 seeded + 1 old "Admission Open 2026-27" test). The site is CMS-only: whatever
+      is in Sanity shows; local static data is now only an emergency fallback.
+      Also set src/sanity/client.ts useCdn:false so /admin edits appear within ~1 min.
+      Build passed (0 errors). => P3 DONE.
+
+      ⚠️ TWO SMALL REMINDERS FOR USER:
+        1. SECURITY: delete the write token after seed —
+           sanity.io/manage -> project -> API -> Tokens -> delete the "seed" token.
+           (It's only needed for the one-time seed; site reads work without it.)
+        2. CLEANUP: in /admin, delete the 2 leftover test items (gallery photo
+           caption "test" + the duplicate "Admission Open 2026-27" notice + empty
+           Achievement) so only the real 12 photos + 4 notices remain.
+
+   >>> (history of the decision kept below for reference) <<<
    ⚠️ OPEN DECISION (user paused here 2026-10-10, will resume):
       Current behaviour (by design): if CMS has >=1 notice, site shows ONLY CMS notices;
       if CMS empty, shows the 4 static demo notices. So when user published 1 notice, the
