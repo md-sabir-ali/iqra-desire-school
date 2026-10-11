@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { StructuredData } from "@/components/StructuredData";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="flex min-h-screen flex-col">
+        <StructuredData />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
