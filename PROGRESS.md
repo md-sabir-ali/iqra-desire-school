@@ -150,6 +150,16 @@
          animated numbers, e.g. { value: 500, suffix: "+", label: "Students" } and
          { value: 25, suffix: "+", label: "Teachers" }. Just need real approx counts.
 
+   ✅ (2026-10-11) Added professional "Our Facilities" section on home page
+      (St. Mathews-style icon cards, gold accent + hover lift). 6 facilities:
+      Computer Lab, Library, Playground, Smart Classes, Transport/Bus, Science Lab.
+      Data: `facilities` in src/data/academics.ts; rendered in src/app/page.tsx
+      (after "What Makes Us Stand Apart"). Added accent-50 shade in tailwind.config.ts.
+      Descriptions are general & true (no over-claims like exact book counts).
+      ⏳ PENDING — WHEN REAL DATA ARRIVES: user will confirm which facilities actually
+         exist (add/remove) and give specifics (e.g. library book count, lab details,
+         smart-class count) so Kiro can enrich the descriptions.
+
    Still TODO in P4 (fill with real content when school provides it):
      - Principal: real name + photo + message (src/data/faculty.ts — currently
        "Principal Name" placeholder + /images/placeholder.svg).
