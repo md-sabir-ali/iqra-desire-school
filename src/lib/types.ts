@@ -27,6 +27,8 @@ export interface FacultyMember {
   role: string;
   photo?: string;
   bio?: string;
+  /** Optional qualifications line, e.g. "M.A., B.Ed." (shown on About page). */
+  qualifications?: string;
 }
 
 export interface ClassLevel {

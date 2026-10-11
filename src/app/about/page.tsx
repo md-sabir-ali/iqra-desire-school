@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { Target, Eye, Quote } from "lucide-react";
+import { Target, Eye, Quote, GraduationCap } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
 import { getFaculty } from "@/lib/api";
 import { siteConfig } from "@/config/site";
@@ -88,28 +88,53 @@ export default async function AboutPage() {
 
       {/* Principal's message */}
       <Section>
-        <SectionHeading eyebrow="Leadership" title="Principal's Message" />
-        <div className="card flex flex-col gap-6 sm:flex-row sm:items-start">
-          <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl bg-brand-50">
-            <Image
-              src={principal?.photo || "/images/placeholder.svg"}
-              alt={principal?.name || "Principal"}
-              fill
-              className="object-cover"
-              sizes="112px"
-            />
-          </div>
-          <div>
-            <Quote className="h-6 w-6 text-brand-300" />
-            <p className="mt-2 text-gray-600">
-              {/* TODO: replace with the real Principal's message. */}
-              {principal?.bio ||
-                "At our school, we believe every child is unique. Together with parents, we nurture each student to grow in knowledge, character, and confidence."}
-            </p>
-            <p className="mt-4 font-semibold text-brand-800">
-              {principal?.name || "Principal Name"}
-            </p>
-            <p className="text-sm text-gray-500">{principal?.role || "Principal"}</p>
+        <SectionHeading eyebrow="Leadership" title="Principal's Message" centered />
+        <div className="mx-auto max-w-4xl">
+          <div className="relative overflow-hidden rounded-3xl bg-brand-700 p-8 text-white shadow-xl sm:p-10">
+            {/* decorative accent */}
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20" />
+            <div className="pointer-events-none absolute -bottom-12 -left-12 h-48 w-48 rounded-full bg-accent-500/10" />
+
+            <div className="relative flex flex-col items-center gap-8 sm:flex-row sm:items-start">
+              {/* Photo / placeholder */}
+              <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-2xl border-4 border-accent-400/60 bg-brand-600 shadow-lg">
+                {principal?.photo ? (
+                  <Image
+                    src={principal.photo}
+                    alt={principal?.name || "Principal"}
+                    fill
+                    className="object-cover"
+                    sizes="128px"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-accent-300">
+                    <GraduationCap className="h-14 w-14" />
+                  </div>
+                )}
+              </div>
+
+              {/* Message */}
+              <div className="text-center sm:text-left">
+                <Quote className="mx-auto h-8 w-8 text-accent-400 sm:mx-0" />
+                <p className="mt-3 text-lg leading-relaxed text-brand-50">
+                  {principal?.bio ||
+                    `At ${siteConfig.shortName}, we believe every child is unique and full of potential. Our dedicated teachers work hand in hand with parents to nurture each student — not only in academics, but in character, confidence, and values. Together, we help every child grow and shine.`}
+                </p>
+                <div className="mt-5">
+                  {principal?.name ? (
+                    <p className="text-lg font-bold text-accent-400">{principal.name}</p>
+                  ) : (
+                    <p className="text-lg font-bold text-accent-400">Our Principal</p>
+                  )}
+                  {principal?.qualifications && (
+                    <p className="text-sm text-brand-200">{principal.qualifications}</p>
+                  )}
+                  <p className="text-sm font-medium text-brand-200">
+                    {principal?.role || "Principal"}, {siteConfig.name}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Section>
