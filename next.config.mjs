@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    // Serve modern, smaller image formats automatically (better performance,
+    // lower data use on mobile) — free, handled by Next/Vercel.
+    formats: ["image/avif", "image/webp"],
     // Allow Sanity's image CDN (gallery / achievement photos uploaded via /admin).
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
