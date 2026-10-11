@@ -29,6 +29,11 @@
    - Domain India support set nameservers to ns1/ns2.vercel-dns.com; DNS propagated.
      Verified: NS=vercel-dns, A @ -> 216.198.79.1 (Vercel). www -> Vercel too.
    - ✅ Updated src/config/site.ts `url` to https://iqradesire.com; committed+pushed (main).
+   - ✅ SEO REDIRECT (2026-10-11): old Vercel URL (iqra-desire-school.vercel.app) now
+     308-permanent-redirects to https://iqradesire.com (path preserved). Avoids
+     duplicate-content; one canonical domain. Implemented via `redirects()` in
+     next.config.mjs (host-based `has` rule; custom domain itself is NOT redirected so
+     no loop). Verified: old /notices -> 308 -> iqradesire.com/notices; custom = 200.
    - FUTURE (optional): add .edu.in later (needs recognition docs), redirect .com->.edu.in.
    - (history below kept for reference)
 ### P2. Domain iqradesire.com — 🟡 IN PROGRESS (purchased 2026-10-09)
