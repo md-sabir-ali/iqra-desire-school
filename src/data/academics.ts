@@ -56,13 +56,17 @@ export const highlights = [
 
 
 /**
- * STATS — animated count-up numbers on the home page.
- * NOTE: 'students' and 'teachers' are placeholders — update with real numbers.
+ * STATS — numbers/labels shown on the home page.
+ * Only TRUE, verifiable facts here (no made-up counts). Student/teacher
+ * numbers were placeholders and have been replaced with safe, honest values.
+ * When the school gives real approx numbers, swap the text ones for:
+ *   { value: 500, suffix: "+", label: "Students" }  // animated count-up
+ * (a plain number auto-animates; a `isText` entry shows as-is).
  */
 export const stats = [
   { value: 2013, suffix: "", label: "Established", isYear: true },
-  { value: 500, suffix: "+", label: "Students" }, // TODO: real number
-  { value: 25, suffix: "+", label: "Teachers" }, // TODO: real number
+  { value: "Nursery–10", label: "Classes", isText: true },
+  { value: "English", label: "Medium", isText: true },
   { value: 100, suffix: "%", label: "Caring Support" },
 ];
 

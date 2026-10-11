@@ -49,10 +49,13 @@ export default async function HomePage() {
             <Reveal key={s.label} delay={i * 100}>
               <div className="text-center">
                 <div className="text-3xl font-extrabold text-accent-400 sm:text-4xl">
-                  {"isYear" in s && s.isYear ? (
-                    s.value
+                  {typeof s.value === "number" && !("isYear" in s && s.isYear) ? (
+                    <CountUp end={s.value} suffix={"suffix" in s ? s.suffix : ""} />
                   ) : (
-                    <CountUp end={s.value} suffix={s.suffix} />
+                    <>
+                      {s.value}
+                      {"suffix" in s ? s.suffix : ""}
+                    </>
                   )}
                 </div>
                 <div className="mt-1 text-sm font-medium text-brand-100">{s.label}</div>
