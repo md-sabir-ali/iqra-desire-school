@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ClipboardList, FileText, UserCheck, Phone, MessageCircle } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { admissionFaqs } from "@/data/faqs";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -104,6 +106,33 @@ export default function AdmissionsPage() {
             </div>
           </div>
         </div>
+      </Section>
+
+      {/* Frequently Asked Questions */}
+      <Section>
+        <SectionHeading
+          eyebrow="Good to Know"
+          title="Frequently Asked Questions"
+          subtitle="Quick answers to the questions parents ask us most. Still unsure? Just reach out — we're happy to help."
+          centered
+        />
+        <FaqAccordion items={admissionFaqs} />
+
+        {/* SEO: FAQPage structured data for rich results in Google. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: admissionFaqs.map((f) => ({
+                "@type": "Question",
+                name: f.question,
+                acceptedAnswer: { "@type": "Answer", text: f.answer },
+              })),
+            }),
+          }}
+        />
       </Section>
     </>
   );
