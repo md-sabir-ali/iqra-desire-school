@@ -238,6 +238,25 @@
    (history/vision/mission), src/app/page.tsx (stats), src/data/notices.ts,
    src/data/gallery.ts + public/images/galary/ (photos), src/data/academics.ts.
 
+### P4b. Professional "St. Mathews-beating" features — ✅ DONE (2026-10-11)
+   Added 3 polished features (built, 0-error builds, pushed to main, verified live):
+   1. GLOBAL WHATSAPP FLOATING BUTTON — src/components/WhatsAppButton.tsx, mounted in
+      layout.tsx (every page). Official WA icon, #25D366, pulse-ring animation
+      (globals.css @keyframes pulse-ring / .animate-pulse-ring; motion-reduce safe),
+      "Chat with us" hover tooltip, prefilled admission message, opens wa.me/<number>.
+      Uses siteConfig.contact.whatsapp (+91 88091 48710).
+   2. FAQ SECTION on /admissions — src/components/FaqAccordion.tsx (native
+      <details>/<summary>, keyboard-accessible, gold chevron rotate) + 7 honest general
+      FAQs in src/data/faqs.ts. Also emits FAQPage JSON-LD structured data for Google
+      rich results (SEO win over St. Mathews).
+      ⏳ When school confirms: update fee/docs/session-date answers in src/data/faqs.ts.
+   3. "A JOURNEY THROUGH THE CLASSES" on home — src/app/page.tsx, navy section with
+      numbered gold step badges (1–4), desktop connecting line, cards from classLevels
+      (Pre-Primary → Secondary), "Explore Academics" CTA. St.-Mathews "learning journey"
+      style but cleaner.
+   (Also earlier same day: honest home stats, Our Facilities section, redesigned
+    Principal card, real About photo, old-domain SEO redirect.)
+
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
 ## (user will add more points below as he remembers)
