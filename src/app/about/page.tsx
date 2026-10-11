@@ -45,10 +45,10 @@ export default async function AboutPage() {
               learning.
             </p>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-50">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-50 shadow-lg">
             <Image
-              src="/images/placeholder.svg"
-              alt={`${siteConfig.name} campus`}
+              src="/images/galary/st.jpg"
+              alt={`Students at ${siteConfig.name}`}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
