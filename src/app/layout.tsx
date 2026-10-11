@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { StructuredData } from "@/components/StructuredData";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -40,6 +41,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#152a54",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -53,6 +58,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <ScrollToTop />
       </body>
     </html>
   );
