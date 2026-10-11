@@ -257,6 +257,30 @@
    (Also earlier same day: honest home stats, Our Facilities section, redesigned
     Principal card, real About photo, old-domain SEO redirect.)
 
+### P4c. Top-notch professional upgrades (ALL FREE, no paid service) — ✅ DONE (2026-10-11)
+   Tech-lead ownership pass. Everything uses Next.js/Vercel built-ins → ₹0 running cost.
+   All built, 0-error builds, pushed to main, verified live on iqradesire.com:
+   1. SEO STRUCTURED DATA — src/components/StructuredData.tsx (rendered in layout):
+      EducationalOrganization+School JSON-LD (name, logo, address, pincode, geo coords
+      ~Simri/Buxar, phone, email, foundingDate 2013, social sameAs). Helps Google show
+      the school as a rich entity. VERIFIED live (EducationalOrganization + GeoCoordinates).
+      ⏳ geo lat/long are APPROXIMATE (25.5647, 84.0907) — update when exact pin known.
+   2. BRANDED OPEN GRAPH IMAGE — src/app/opengraph-image.tsx (dynamic, 1200x630, navy+gold,
+      name/tagline/classes/address). Rich preview when link shared on WhatsApp/FB/etc.
+      VERIFIED: /opengraph-image returns HTTP 200 image/png.
+      ⚠️ MUST keep `export const runtime = "edge"` (node runtime fails prerender).
+   3. PWA / INSTALLABLE — src/app/manifest.ts (served at /manifest.webmanifest): standalone
+      display, navy theme #152a54, logo icons. + viewport themeColor in layout. Site can be
+      "Added to Home Screen" like an app. No service worker (keeps it free). VERIFIED live.
+   4. SCROLL-TO-TOP button — src/components/ScrollToTop.tsx (global, appears after 500px,
+      smooth, above WhatsApp button, accessible).
+   5. BRANDED 404 — src/app/not-found.tsx (navy+gold, 4 quick nav links, school name/tagline).
+      VERIFIED live.
+   6. PERFORMANCE/A11Y — enabled AVIF/WebP image formats (next.config.mjs). Audit: no raw
+      <img>, all alt texts present, hero LCP has priority+sizes+aria, slider dots aria-labelled,
+      proper h1s, all 7 content pages have SEO metadata. Hero already optimised.
+   (NOTE for user: Sanity CMS still has its separate free "trial popup" — just "Maybe later".)
+
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
 ## (user will add more points below as he remembers)
