@@ -3,14 +3,20 @@
 > Kal yeh file Kiro ko padhne ko bolna: "PROGRESS.md padho aur aage badho".
 > Isi se sab context wapas aa jayega.
 
-## ⏭️ RESUME NEXT SESSION (last worked 2026-10-11 evening)
-- Everything built so far is DONE, committed & pushed to main, verified LIVE. Git clean.
-- NEXT PLANNED: **Tier 2** (free, no data needed): Academics page visual upgrade
-  (St.-Mathews-style level cards) + a sticky/prominent "Apply Now" CTA.
+## ⏭️ RESUME NEXT SESSION (last worked 2026-10-13)
+- Everything built so far is DONE, committed & pushed to main. Git clean.
+- ✅ TIER 2 DONE (2026-10-13): Academics page visual upgrade + "Apply Now" CTA.
+  (see P4e below). Commit f9afc4d on main; Vercel auto-deploying. Build 0 errors,
+  /academics still STATIC (156 kB First Load JS) — zero perf impact.
+- NEXT PLANNED: pick from P5 (more St.-Mathews polish) OR wait for real school data
+  (P4) to fill principal/stats/vision/photos. Suggest asking user what's next.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
-  (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry; (c) later: fill real
-  school data (principal, stats numbers, facilities details, vision/mission, photos) —
-  see P4 list. SANITY_WRITE_TOKEN env var is already set in Vercel (enquiry→CMS works).
+  (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
+  (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
+  (c) delete the one-time Sanity "seed" write token (security);
+  (d) later: fill real school data (principal, stats numbers, facilities details,
+  vision/mission, photos) — see P4 list. SANITY_WRITE_TOKEN env var already set in
+  Vercel (enquiry→CMS works).
 - Reminder: Sanity "trial popup" = just click "Maybe later" (free plan fine).
 
 ## Live site
@@ -317,6 +323,25 @@
      B. ENABLE VERCEL ANALYTICS: Vercel → project → Analytics tab → Enable (free Hobby).
    After A: test the form once; the enquiry should appear in /admin → "Admission Enquiry".
    Until A is done, enquiries still EMAIL as before (nothing broken).
+
+### P4e. Tier 2: Academics page visual upgrade + Apply Now CTA — ✅ DONE (2026-10-13)
+   All free, pure CSS/HTML, ZERO new deps, server component → zero perf impact.
+   Built 0 errors, committed f9afc4d, pushed to main (Vercel auto-deploy).
+   /academics stays STATIC (○), First Load JS ~156 kB (unchanged).
+   File: src/app/academics/page.tsx (full rewrite).
+   1. ST.-MATHEWS-STYLE LEVEL CARDS — the 4 classLevels now render as a numbered
+      "journey" grid: gold gradient number badge (1–4), big faded watermark step number
+      (01–04), gold accent tag per level ("Foundation Years" / "Building Basics" /
+      "Growing Minds" / "Board Preparation"), unique Lucide icon per level
+      (Baby / BookOpen / Lightbulb / GraduationCap), hover: lift + gold border +
+      icon color flip. Icon+tag mapped by level.id via `levelMeta` (presentational
+      only — ClassLevel type unchanged; unknown ids fall back gracefully).
+   2. "HOW WE TEACH" — added 4 gold CheckCircle2 bullet highlights under the prose.
+   3. APPLY NOW CTA — full-width navy (brand-800) banner at page bottom with a bold
+      gold (accent-500) "Apply Now" button → links to /admissions. Responsive
+      (stacks on mobile, row on md+).
+   ⏳ When real data arrives: level descriptions in src/data/academics.ts can be
+      enriched (subjects, timings) — cards auto-reflect any text change.
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
