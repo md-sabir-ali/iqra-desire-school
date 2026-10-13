@@ -19,10 +19,12 @@
 - ✅ BATCH B DONE (2026-10-13): loading.tsx skeletons for /notices /gallery
   /achievements + Footer enrichment (Admissions CTA strip, tagline+motto, WhatsApp
   pill, Est. year). (see P4i below). Commit 516c80a on main.
-- NEXT PLANNED: free polish is now largely EXHAUSTED. Remaining work mostly WAITS on
-  real school data (P4): principal name/photo/message, real stats numbers, vision/
-  mission text, more photos, real toppers in CMS, confirm office hours + map pin.
-  Ask user to provide data, or wait. Phase 2+ (DB/auth/AI/ads/payments) = P5 future.
+- ✅ AUDIT + FIXES DONE (2026-10-13): full pro audit of live site; fixed P0 "0%" stat
+  bug + canonicals + hero LCP + NEW /privacy page + tel/keywords/grammar/breadcrumb.
+  (see P4j below). Commit c350d7e on main; verified live.
+- NEXT PLANNED: free/no-data work is EXHAUSTED. Remaining = REAL SCHOOL DATA (P4j open
+  list): principal, confirm facilities + affordability claims, real office hours, exact
+  map pin, real stats/toppers. Also recommend: run PageSpeed Insights + contrast check.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
@@ -450,7 +452,37 @@
    >>> Free, no-data polish is now largely EXHAUSTED. Next meaningful work needs real
        school data — see P4 list. <<<
 
-### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
+### P4j. Professional audit + fixes (expert recommendation batch) — ✅ DONE (2026-10-13)
+   Ran a full multidisciplinary audit of the LIVE site (verified via curl headers +
+   raw HTML, no guessing). Then implemented the P0 + all no-data fixes. Build 0 errors
+   (16 routes incl new /privacy), committed c350d7e, pushed to main, verified live.
+   FIXED:
+   - I-01 (P0): "0% Caring Support" bug — CountUp now useState(end) so SSR/no-JS/crawlers
+     see 100%; animation runs only after client mount (reduced-motion safe).
+     src/components/CountUp.tsx.
+   - I-05: NEW /privacy page (src/app/privacy/page.tsx) — data collected, use, children's
+     info, storage, cookies, contact. Linked in footer + enquiry form. Added to sitemap.
+   - I-06: per-page <link rel=canonical> on all 7 inner pages + default "/" in layout.
+   - I-07: removed obsolete <meta keywords> from layout.
+   - I-08: hero images quality=70 + non-first slides loading=lazy (LCP).
+   - I-09: Breadcrumbs now take `path` prop; last crumb JSON-LD item = own URL.
+   - I-10: added contact.phoneHref (digits only); all tel: links use it (no space).
+   - I-11: "a English" → "an English" in description.
+   AUDIT FINDINGS STILL OPEN (need REAL school data — can't fix without it):
+   - Principal name/photo/message; real Vision/Mission text (placeholders).
+   - CONFIRM every facility (Computer/Science Lab, Smart Classes, Transport, Library)
+     + the "Quality, Affordable" / "Small Class Sizes" claims — remove any untrue ones.
+   - Real office hours (currently Mon–Sat 8–2 placeholder) + exact Google Maps pin
+     (currently approximate area search; geo in schema also approximate 25.5647,84.0907).
+   - Real stats numbers; real notices/toppers in CMS.
+   AUDIT: things CONFIRMED GOOD (don't redo): security headers live, SSR+static+fast,
+   SEO metadata/OG/sitemap/robots, EducationalOrganization+BreadcrumbList+FAQPage JSON-LD,
+   www→apex 308, PWA manifest, honeypot spam guard, Navbar active-link, 404 returns 404.
+   NOT TESTED (no tooling): Lighthouse/PSI scores, real-device, screen-reader, contrast
+   ratios, Search Console indexing, live form end-to-end delivery. Recommend running
+   PageSpeed Insights + a contrast check before final sign-off.
+
+### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments) + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
 ## (user will add more points below as he remembers)
 ## ---------------------------------------------------------
