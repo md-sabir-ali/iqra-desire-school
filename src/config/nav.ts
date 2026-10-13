@@ -5,6 +5,7 @@ export const mainNav = [
   { title: "Academics", href: "/academics" },
   { title: "Admissions", href: "/admissions" },
   { title: "Gallery", href: "/gallery" },
+  { title: "Achievements", href: "/achievements" },
   { title: "Notices", href: "/notices" },
   { title: "Contact", href: "/contact" },
 ] as const;

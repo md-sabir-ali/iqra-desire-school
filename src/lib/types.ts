@@ -37,6 +37,20 @@ export interface ClassLevel {
   description: string;
 }
 
+/**
+ * ACHIEVEMENT / TOPPER
+ * Matches the Sanity `achievement` schema (see src/sanity/fetch.ts
+ * AchievementItem). `name` = student/award name, `detail` = marks/description,
+ * `year` = session, `photo` = optional image URL/path.
+ */
+export interface Achievement {
+  id: string;
+  name: string;
+  detail?: string;
+  year?: string;
+  photo?: string;
+}
+
 export interface EnquiryInput {
   parentName: string;
   studentName: string;

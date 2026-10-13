@@ -13,12 +13,14 @@ import { notices as staticNotices } from "@/data/notices";
 import { galleryItems as staticGallery } from "@/data/gallery";
 import { faculty as staticFaculty } from "@/data/faculty";
 import { classLevels as staticClasses } from "@/data/academics";
-import { fetchNotices, fetchGallery } from "@/sanity/fetch";
+import { achievements as staticAchievements } from "@/data/achievements";
+import { fetchNotices, fetchGallery, fetchAchievements } from "@/sanity/fetch";
 import type {
   Notice,
   GalleryItem,
   FacultyMember,
   ClassLevel,
+  Achievement,
   EnquiryInput,
   EnquiryResult,
 } from "@/lib/types";
@@ -64,6 +66,20 @@ export async function getFaculty(): Promise<FacultyMember[]> {
 
 export async function getClassLevels(): Promise<ClassLevel[]> {
   return staticClasses;
+}
+
+/**
+ * Achievements / toppers. Prefer Sanity CMS (user-managed in /admin), fall
+ * back to local static data when the CMS is empty or unreachable.
+ */
+export async function getAchievements(): Promise<Achievement[]> {
+  try {
+    const fromCms = await fetchAchievements();
+    if (fromCms.length > 0) return fromCms;
+  } catch {
+    // ignore and use static fallback below
+  }
+  return staticAchievements;
 }
 
 /**
