@@ -132,7 +132,7 @@ export default async function HomePage() {
         <SectionHeading
           eyebrow="Why Choose Us"
           title="What Makes Us Stand Apart"
-          subtitle="A learning experience that goes beyond textbooks."
+          subtitle="Six reasons parents trust us — education that builds confident, capable, and caring children, not just good marks."
           centered
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

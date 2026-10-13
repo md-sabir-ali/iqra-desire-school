@@ -12,6 +12,9 @@ import {
   CalendarDays,
   MapPin,
   Users,
+  MessagesSquare,
+  Sprout,
+  Wallet,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -162,34 +165,35 @@ export default async function AboutPage() {
         </div>
       </Section>
 
-      {/* Why Choose Us — quick highlights */}
+      {/* The Parent's Advantage — parent-focused points (distinct from Home's feature list) */}
       <Section>
         <SectionHeading
-          eyebrow="Why Choose Us"
-          title="What Makes Us Different"
+          eyebrow="For Parents"
+          title="The Iqra Desire Advantage"
+          subtitle="Beyond our teaching, here's what makes everyday school life reassuring for parents."
           centered
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               icon: Users,
-              title: "Personal Attention",
-              text: "Small class sizes and caring teachers ensure every child gets the focus they need.",
+              title: "Small Class Sizes",
+              text: "Fewer students per class means every child is known by name and never gets lost in the crowd.",
             },
             {
-              icon: ShieldCheck,
-              title: "Safe Campus",
-              text: "A secure, disciplined environment where students feel safe and parents feel confident.",
+              icon: MessagesSquare,
+              title: "Regular Parent Updates",
+              text: "Frequent parent-teacher interaction keeps you informed about your child's progress and well-being.",
             },
             {
-              icon: GraduationCap,
-              title: "Board Exam Focus",
-              text: "Regular tests, doubt-clearing sessions, and focused preparation for Class 10 boards.",
+              icon: Sprout,
+              title: "Strong Early Foundation",
+              text: "Trusted since 2013, we give children a confident start that stays with them through every class.",
             },
             {
-              icon: Heart,
-              title: "Values First",
-              text: "We build honesty, respect, and good character alongside strong academics.",
+              icon: Wallet,
+              title: "Quality, Affordable",
+              text: "Honest, quality English-medium education that stays within reach for local families.",
             },
           ].map(({ icon: Icon, title, text }) => (
             <div
