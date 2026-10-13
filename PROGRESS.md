@@ -13,10 +13,12 @@
 - ✅ P5 "NEXT SESSION" DONE (2026-10-13): new /achievements (Toppers) page + Notices
   page upgrade (category filter + pinned highlight) + Contact page polish.
   (see P4g below). Commit 6ab6a2d on main.
-- NEXT PLANNED (free P5 ideas, no data needed): running low on obvious free polish —
-  options: Academics "How We Teach" imagery, Admissions page small polish, a simple
-  testimonials section (needs real quotes = data), or a staff/teachers section (needs
-  data). Otherwise mostly WAITING on real school data (P4). Suggest asking user.
+- ✅ BATCH A DONE (2026-10-13): security headers + home toppers CMS-connected +
+  breadcrumbs & BreadcrumbList schema on all inner pages. (see P4h below).
+  Commit 34265cc on main. Build 0 errors, all 15 routes STATIC.
+- NEXT PLANNED (free, no data): remaining audit ideas — loading.tsx skeletons for
+  CMS pages (notices/gallery/achievements), footer enrichment, print-friendly notices,
+  real sitemap lastModified. Mostly WAITING on real school data (P4) now. Ask user.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
@@ -399,6 +401,30 @@
       (Google Maps directions API to the address).
       ⏳ TODO: confirm the school's REAL office hours (currently a sensible placeholder)
       and the exact Google Maps pin (still the approximate area search).
+
+### P4h. Batch A: security headers + home toppers CMS-connect + breadcrumbs — ✅ DONE (2026-10-13)
+   Tech-lead 360° audit → 3 free high-impact fixes. Build 0 errors (15 routes, all
+   STATIC), committed 34265cc, pushed to main. Zero perf impact.
+   1. SECURITY HEADERS (next.config.mjs headers(), applied to /:path*): HSTS
+      (max-age 2yr, includeSubDomains, preload), X-Frame-Options SAMEORIGIN
+      (deliberately not DENY — keeps Sanity Studio /admin same-origin iframes working),
+      X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin,
+      Permissions-Policy (camera/mic/geolocation/interest-cohort off), X-XSS-Protection.
+      No CSP added (would risk breaking Sanity Studio) — can revisit later if needed.
+      Improves securityheaders.com grade + trust/SEO signal. Verify after deploy with
+      a header check on https://iqradesire.com.
+   2. HOME TOPPERS NOW CMS-DRIVEN — the home "Celebrating Our Achievers" section was 2
+      hardcoded images; now fetches getAchievements().slice(0,3) and renders a dynamic
+      3-col grid (photo + gold year badge + name, hover scale, Trophy fallback) with a
+      "View all achievements →" link to /achievements. Fully consistent with the
+      /achievements page (same data source). revalidate=60 already on home.
+   3. BREADCRUMBS + SCHEMA — new src/components/Breadcrumbs.tsx: visual trail
+      (Home › Page) styled for the navy header + BreadcrumbList JSON-LD (absolute URLs
+      from siteConfig.url) for Google breadcrumb rich-snippets. Added to all 7 inner
+      pages (about, academics, achievements, admissions, gallery, notices, contact).
+   NOTE from audit: Navbar already had active-link highlighting (no work needed).
+   ⏳ Remaining free ideas (low priority): loading.tsx skeletons for CMS pages, footer
+      enrichment, print-friendly notices, real sitemap lastModified dates.
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
