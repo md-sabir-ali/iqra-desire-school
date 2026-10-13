@@ -10,6 +10,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Admissions",
   description: `Admissions at ${siteConfig.name} for ${siteConfig.classesRange}. Enquire online and start your child's journey.`,
+  alternates: { canonical: "/admissions" },
 };
 
 const steps = [
@@ -43,7 +44,7 @@ export default function AdmissionsPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "Admissions" }]} />
+          <Breadcrumbs items={[{ name: "Admissions" }]} path="/admissions" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Admissions</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Admissions open for {siteConfig.classesRange}. We would love to welcome
@@ -87,7 +88,7 @@ export default function AdmissionsPage() {
                 Prefer to talk directly? Reach out and our team will be happy to
                 help you with the admission process.
               </p>
-              <a href={`tel:${siteConfig.contact.phone}`} className="btn-primary w-full">
+              <a href={`tel:${siteConfig.contact.phoneHref}`} className="btn-primary w-full">
                 <Phone className="h-4 w-4" /> Call {siteConfig.contact.phone}
               </a>
               {waNumber && (

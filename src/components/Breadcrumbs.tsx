@@ -13,25 +13,35 @@ export interface Crumb {
  * Breadcrumbs — a small navigation trail plus BreadcrumbList structured data
  * (JSON-LD) so Google can show breadcrumb rich-snippets in search results.
  *
- * Usage (on an inner page header): <Breadcrumbs items={[{ name: "About" }]} />
+ * Usage (on an inner page header):
+ *   <Breadcrumbs items={[{ name: "About Us" }]} path="/about" />
  * "Home" is prepended automatically; the final item is the current page.
+ * `path` is the current page's absolute path — used so the final crumb's
+ * structured-data URL points to the page itself (not the site root).
  *
  * Designed to sit on the dark navy page header, so text uses brand-100/white.
  */
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export function Breadcrumbs({ items, path }: { items: Crumb[]; path?: string }) {
   // Full trail including Home at the front.
   const trail: Crumb[] = [{ name: "Home", href: "/" }, ...items];
 
-  // JSON-LD: every item needs an absolute URL (Google requirement).
+  const abs = (href?: string) =>
+    `${siteConfig.url}${href === "/" ? "" : href ?? ""}`;
+
+  // JSON-LD: every item needs an absolute URL (Google requirement). The last
+  // crumb (current page) uses `path` so it points to its own URL.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: trail.map((c, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: c.name,
-      item: `${siteConfig.url}${c.href === "/" ? "" : c.href ?? ""}`,
-    })),
+    itemListElement: trail.map((c, i) => {
+      const isLast = i === trail.length - 1;
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        name: c.name,
+        item: abs(isLast ? path ?? c.href : c.href),
+      };
+    }),
   };
 
   return (

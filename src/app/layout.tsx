@@ -18,14 +18,9 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Iqra Desire English School",
-    "school in Simri",
-    "school in Buxar",
-    "Bihar English medium school",
-    "Nursery to Class 10",
-    "admissions",
-  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,

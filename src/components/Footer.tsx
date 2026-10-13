@@ -91,7 +91,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 shrink-0" />
-              <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-white">
+              <a href={`tel:${siteConfig.contact.phoneHref}`} className="hover:text-white">
                 {siteConfig.contact.phone}
               </a>
             </li>
@@ -136,7 +136,12 @@ export function Footer() {
             {siteConfig.establishedYear ? ` · Est. ${siteConfig.establishedYear}` : ""}.
             All rights reserved.
           </p>
-          <p>{siteConfig.contact.addressLine}</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <span className="hidden sm:inline">{siteConfig.contact.addressLine}</span>
+          </div>
         </div>
       </div>
     </footer>

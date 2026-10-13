@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { submitEnquiry } from "@/lib/api";
 import type { EnquiryInput } from "@/lib/types";
@@ -171,7 +172,12 @@ export function EnquiryForm() {
         <Send className="h-4 w-4" />
       </button>
       <p className="text-center text-xs text-gray-500">
-        We respect your privacy. Your details are only used to contact you about admissions.
+        We respect your privacy. Your details are only used to contact you about
+        admissions. Read our{" "}
+        <Link href="/privacy" className="font-medium text-brand-600 underline hover:text-brand-700">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   );

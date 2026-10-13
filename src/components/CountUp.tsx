@@ -19,12 +19,26 @@ interface CountUpProps {
  */
 export function CountUp({ end, suffix = "", prefix = "", duration = 1600 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState(0);
+  // Start at the FINAL value so the server-rendered HTML (and no-JS users and
+  // search-engine crawlers) always show the real number — never "0". The
+  // count-up is a progressive enhancement applied only after the component
+  // mounts on the client.
+  const [value, setValue] = useState(end);
   const started = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Respect reduced-motion: keep the final value, skip the animation.
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    // Reset to 0 on the client, then animate up to `end` when scrolled into view.
+    setValue(0);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {

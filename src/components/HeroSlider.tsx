@@ -36,6 +36,8 @@ export function HeroSlider() {
             alt={slide.alt}
             fill
             priority={i === 0}
+            loading={i === 0 ? undefined : "lazy"}
+            quality={70}
             className={`object-cover ${i === current ? "animate-kenburns" : ""}`}
             sizes="100vw"
           />
@@ -66,7 +68,7 @@ export function HeroSlider() {
             Enquire for Admission <ArrowRight className="h-4 w-4" />
           </Link>
           <a
-            href={`tel:${siteConfig.contact.phone}`}
+            href={`tel:${siteConfig.contact.phoneHref}`}
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
           >
             <Phone className="h-4 w-4" /> Call Us

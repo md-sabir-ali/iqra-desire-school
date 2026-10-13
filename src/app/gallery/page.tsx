@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Gallery",
   description: `Photo and video gallery of ${siteConfig.name} — events, activities, and campus life.`,
+  alternates: { canonical: "/gallery" },
 };
 
 // Re-fetch CMS photos at most once per 60s (ISR).
@@ -20,7 +21,7 @@ export default async function GalleryPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "Gallery" }]} />
+          <Breadcrumbs items={[{ name: "Gallery" }]} path="/gallery" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Gallery</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             A glimpse of life, events, and activities at {siteConfig.shortName}.

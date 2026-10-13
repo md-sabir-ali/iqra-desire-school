@@ -15,6 +15,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Contact Us",
   description: `Contact ${siteConfig.name} in ${siteConfig.contact.addressLine}. Phone, email, and location.`,
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -33,7 +34,7 @@ export default function ContactPage() {
       icon: Phone,
       title: "Phone",
       lines: [siteConfig.contact.phone],
-      href: `tel:${siteConfig.contact.phone}`,
+      href: `tel:${siteConfig.contact.phoneHref}`,
     },
     {
       icon: Mail,
@@ -47,7 +48,7 @@ export default function ContactPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "Contact Us" }]} />
+          <Breadcrumbs items={[{ name: "Contact Us" }]} path="/contact" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Contact Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             We are here to help. Reach out to us anytime — we would love to hear
@@ -91,7 +92,7 @@ export default function ContactPage() {
 
         {/* Quick action buttons */}
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={`tel:${siteConfig.contact.phone}`} className="btn-primary">
+          <a href={`tel:${siteConfig.contact.phoneHref}`} className="btn-primary">
             <Phone className="h-4 w-4" /> Call Now
           </a>
           {waNumber && (

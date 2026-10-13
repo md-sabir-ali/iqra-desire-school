@@ -39,7 +39,7 @@ export function Hero() {
               Enquire for Admission <ArrowRight className="h-4 w-4" />
             </Link>
             <a
-              href={`tel:${siteConfig.contact.phone}`}
+              href={`tel:${siteConfig.contact.phoneHref}`}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
               <Phone className="h-4 w-4" /> Call Us

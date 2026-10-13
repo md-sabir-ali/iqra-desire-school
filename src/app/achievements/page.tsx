@@ -10,6 +10,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Achievements & Toppers",
   description: `Celebrating the achievements, toppers, and award winners of ${siteConfig.name}.`,
+  alternates: { canonical: "/achievements" },
 };
 
 // Re-fetch CMS achievements at most once per 60s (ISR).
@@ -23,7 +24,7 @@ export default async function AchievementsPage() {
       {/* Page header */}
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "Achievements" }]} />
+          <Breadcrumbs items={[{ name: "Achievements" }]} path="/achievements" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">
             Achievements &amp; Toppers
           </h1>

@@ -24,6 +24,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "About Us",
   description: `About ${siteConfig.name} — our vision, mission, and commitment to quality education in ${siteConfig.contact.addressLine}.`,
+  alternates: { canonical: "/about" },
 };
 
 /** Core values displayed as a row of icon pills below Vision/Mission. */
@@ -43,7 +44,7 @@ export default async function AboutPage() {
       {/* Page header */}
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "About Us" }]} />
+          <Breadcrumbs items={[{ name: "About Us" }]} path="/about" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">About Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Learn about our journey, values, and the people who make{" "}

@@ -17,6 +17,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Academics",
   description: `Academics at ${siteConfig.name} — curriculum and classes from ${siteConfig.classesRange}.`,
+  alternates: { canonical: "/academics" },
 };
 
 /**
@@ -38,7 +39,7 @@ export default async function AcademicsPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
-          <Breadcrumbs items={[{ name: "Academics" }]} />
+          <Breadcrumbs items={[{ name: "Academics" }]} path="/academics" />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Academics</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             A structured, caring academic journey from {siteConfig.classesRange}.
