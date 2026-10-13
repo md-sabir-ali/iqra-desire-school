@@ -6,10 +6,14 @@
 ## ⏭️ RESUME NEXT SESSION (last worked 2026-10-13)
 - Everything built so far is DONE, committed & pushed to main. Git clean.
 - ✅ TIER 2 DONE (2026-10-13): Academics page visual upgrade + "Apply Now" CTA.
-  (see P4e below). Commit f9afc4d on main; Vercel auto-deploying. Build 0 errors,
-  /academics still STATIC (156 kB First Load JS) — zero perf impact.
-- NEXT PLANNED: pick from P5 (more St.-Mathews polish) OR wait for real school data
-  (P4) to fill principal/stats/vision/photos. Suggest asking user what's next.
+  (see P4e below). Commit f9afc4d on main.
+- ✅ P5 POLISH DONE (2026-10-13): Gallery full-screen LIGHTBOX + About page upgrade
+  (Vision/Mission gold cards, Core Values, Why-Choose-Us). (see P4f below).
+  Commit 7d450f9 on main. All builds 0 errors, pages stay STATIC → zero perf impact.
+- NEXT PLANNED (free P5 ideas, no data needed): Toppers/Achievements dedicated page,
+  Notices page upgrade (category filter + pinned highlight), Contact page polish.
+  OR wait for real school data (P4) to fill principal/stats/vision/photos.
+  Suggest asking user what's next.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
@@ -342,6 +346,26 @@
       (stacks on mobile, row on md+).
    ⏳ When real data arrives: level descriptions in src/data/academics.ts can be
       enriched (subjects, timings) — cards auto-reflect any text change.
+
+### P4f. P5 polish: Gallery lightbox + About page upgrade — ✅ DONE (2026-10-13)
+   All free, no new deps. Build 0 errors, committed 7d450f9, pushed to main.
+   Both pages stay STATIC (○) → zero perf impact. /gallery 2.58 kB, /about 331 B.
+   1. GALLERY FULL-SCREEN LIGHTBOX — new client component
+      src/components/GalleryGrid.tsx (holds grid + lightbox). Click any photo →
+      opens full-screen; prev/next on-screen arrows + keyboard (←/→), Esc or backdrop
+      click to close, body-scroll lock, photo counter (n/total), caption shown.
+      Videos NOT opened (just show play badge — behaviour unchanged). Pure React +
+      Tailwind, next/image for optimisation. Gallery page (src/app/gallery/page.tsx)
+      now imports GalleryGrid and passes items; still server component, revalidate=60.
+   2. ABOUT PAGE UPGRADE (src/app/about/page.tsx) — added:
+      (a) "Established" trust strip (2013 / Nursery–10 / English / Simri, gold icons);
+      (b) Vision & Mission now rich gold-gradient-badge cards (hover lift, accent-50
+          decorative blob) + a Core Values pill row (4 values);
+      (c) new "Why Choose Us" 4-card grid (Personal Attention / Safe Campus /
+          Board Exam Focus / Values First).
+      Principal's Message section kept as-is (already redesigned in P4).
+   ⏳ When real data arrives: Vision/Mission text + story still have TODO placeholders
+      (src/app/about/page.tsx) — fill when school provides real text.
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
