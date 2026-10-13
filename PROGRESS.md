@@ -22,9 +22,18 @@
 - ✅ AUDIT + FIXES DONE (2026-10-13): full pro audit of live site; fixed P0 "0%" stat
   bug + canonicals + hero LCP + NEW /privacy page + tel/keywords/grammar/breadcrumb.
   (see P4j below). Commit c350d7e on main; verified live.
-- NEXT PLANNED: free/no-data work is EXHAUSTED. Remaining = REAL SCHOOL DATA (P4j open
-  list): principal, confirm facilities + affordability claims, real office hours, exact
-  map pin, real stats/toppers. Also recommend: run PageSpeed Insights + contrast check.
+- ✅ PAGESPEED VERIFIED (2026-10-13) — real lab scores, user confirmed:
+    MOBILE : Performance 97, Accessibility 92, Best Practices 100, SEO 92
+    DESKTOP: Performance 99, Accessibility 92, Best Practices 100, SEO 92  (+ Agentic Browsing 2/2)
+    (CrUX field data = "No Data" — just means site is new/low-traffic, NOT a problem.)
+    => Performance/Best-Practices essentially maxed. Hero q=70 fix worked.
+- ⏭️ PENDING (user will provide): the exact Accessibility(92) + SEO(92) warning items
+    from the PSI report so Kiro can push both 92 → 100. STRONG GUESS for A11y = color
+    contrast (gold #d4a017 text — flagged in audit). Do NOT guess-fix; wait for the
+    actual report items from the user. Likely SEO item = minor (crawlable links / alt).
+- NEXT PLANNED: (a) do the 92→100 A11y/SEO fix once user sends report items;
+  (b) REAL SCHOOL DATA (P4j open list): principal, confirm facilities + affordability
+  claims, real office hours, exact map pin, real stats/toppers.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
