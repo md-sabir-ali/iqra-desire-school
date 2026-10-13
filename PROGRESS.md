@@ -10,10 +10,13 @@
 - ✅ P5 POLISH DONE (2026-10-13): Gallery full-screen LIGHTBOX + About page upgrade
   (Vision/Mission gold cards, Core Values, Why-Choose-Us). (see P4f below).
   Commit 7d450f9 on main. All builds 0 errors, pages stay STATIC → zero perf impact.
-- NEXT PLANNED (free P5 ideas, no data needed): Toppers/Achievements dedicated page,
-  Notices page upgrade (category filter + pinned highlight), Contact page polish.
-  OR wait for real school data (P4) to fill principal/stats/vision/photos.
-  Suggest asking user what's next.
+- ✅ P5 "NEXT SESSION" DONE (2026-10-13): new /achievements (Toppers) page + Notices
+  page upgrade (category filter + pinned highlight) + Contact page polish.
+  (see P4g below). Commit 6ab6a2d on main.
+- NEXT PLANNED (free P5 ideas, no data needed): running low on obvious free polish —
+  options: Academics "How We Teach" imagery, Admissions page small polish, a simple
+  testimonials section (needs real quotes = data), or a staff/teachers section (needs
+  data). Otherwise mostly WAITING on real school data (P4). Suggest asking user.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
@@ -366,6 +369,36 @@
       Principal's Message section kept as-is (already redesigned in P4).
    ⏳ When real data arrives: Vision/Mission text + story still have TODO placeholders
       (src/app/about/page.tsx) — fill when school provides real text.
+
+### P4g. P5 "next session": Achievements page + Notices/Contact upgrades — ✅ DONE (2026-10-13)
+   All free, no new deps. Build 0 errors (15 routes), all affected pages STATIC (○)
+   → zero perf impact. Committed 6ab6a2d, pushed to main.
+   1. ACHIEVEMENTS / TOPPERS PAGE — new route /achievements
+      (src/app/achievements/page.tsx). Header + highlights strip (Board Toppers /
+      Sports & Medals / Awards) + responsive card grid (photo with gold year badge,
+      trophy icon, name, detail, hover lift) + navy "Enquire Now" CTA → /admissions.
+      Data wiring: added `Achievement` type (src/lib/types.ts), static fallback
+      src/data/achievements.ts (3 placeholders using 2026 topper.jpg / medal.jpg /
+      sport2.jpg), and getAchievements() in src/lib/api.ts (prefers Sanity via the
+      pre-existing fetchAchievements(), falls back to static). revalidate=60.
+      Added "Achievements" to nav (src/config/nav.ts, between Gallery and Notices)
+      → auto-added to sitemap (derives from mainNav).
+      ⏳ When school gives real toppers: add in /admin → "Achievement" (name = student,
+      detail = marks, year, photo). Placeholders then auto-replaced; can delete
+      src/data/achievements.ts entries later if desired.
+   2. NOTICES PAGE UPGRADE — new client component src/components/NoticesClient.tsx:
+      (a) PINNED HIGHLIGHT banner(s) at top (gold left-border gradient card, Pin badge);
+      (b) CATEGORY FILTER chips (All + only categories actually present, ordered
+          Admission/Event/Exam/Holiday/General); (c) filtered grid reusing NoticeCard.
+      Notices page stays a server component (revalidate=60) that passes sorted notices
+      to NoticesClient; empty-state handled server-side.
+   3. CONTACT PAGE POLISH (src/app/contact/page.tsx) — 3 gold-gradient-icon info cards
+      (Address/Phone/Email, phone+email clickable, hover lift), a quick-action button
+      row (Call Now / WhatsApp / Facebook), an Office Hours card (Mon–Sat 8AM–2PM,
+      Sun closed + "Good to know" note), and a bigger map with a "Get Directions" link
+      (Google Maps directions API to the address).
+      ⏳ TODO: confirm the school's REAL office hours (currently a sensible placeholder)
+      and the exact Google Maps pin (still the approximate area search).
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
