@@ -16,9 +16,13 @@
 - ✅ BATCH A DONE (2026-10-13): security headers + home toppers CMS-connected +
   breadcrumbs & BreadcrumbList schema on all inner pages. (see P4h below).
   Commit 34265cc on main. Build 0 errors, all 15 routes STATIC.
-- NEXT PLANNED (free, no data): remaining audit ideas — loading.tsx skeletons for
-  CMS pages (notices/gallery/achievements), footer enrichment, print-friendly notices,
-  real sitemap lastModified. Mostly WAITING on real school data (P4) now. Ask user.
+- ✅ BATCH B DONE (2026-10-13): loading.tsx skeletons for /notices /gallery
+  /achievements + Footer enrichment (Admissions CTA strip, tagline+motto, WhatsApp
+  pill, Est. year). (see P4i below). Commit 516c80a on main.
+- NEXT PLANNED: free polish is now largely EXHAUSTED. Remaining work mostly WAITS on
+  real school data (P4): principal name/photo/message, real stats numbers, vision/
+  mission text, more photos, real toppers in CMS, confirm office hours + map pin.
+  Ask user to provide data, or wait. Phase 2+ (DB/auth/AI/ads/payments) = P5 future.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
@@ -425,6 +429,26 @@
    NOTE from audit: Navbar already had active-link highlighting (no work needed).
    ⏳ Remaining free ideas (low priority): loading.tsx skeletons for CMS pages, footer
       enrichment, print-friendly notices, real sitemap lastModified dates.
+
+### P4i. Batch B: loading skeletons + Footer enrichment — ✅ DONE (2026-10-13)
+   All free, no new deps. Build 0 errors (15 routes, all STATIC), committed 516c80a,
+   pushed to main. Zero perf impact.
+   1. LOADING SKELETONS — added loading.tsx (Next.js App Router streaming) for the 3
+      CMS-backed pages so they never flash blank while Sanity data loads:
+      src/app/notices/loading.tsx (header + heading + 4 filter chips + 6-card grid),
+      src/app/gallery/loading.tsx (header + heading + 8 square grid),
+      src/app/achievements/loading.tsx (header + highlights strip + 3 image-cards).
+      Pure Tailwind animate-pulse placeholders matching each real layout. No JS.
+   2. FOOTER ENRICHMENT (src/components/Footer.tsx) — added a top "Admissions Open for
+      Nursery–10" CTA strip (brand-900 bg + gold "Apply Now" → /admissions), the
+      tagline (gold) + motto (italic, left-border) under the logo/description, a
+      WhatsApp pill next to the Facebook pill, and "· Est. 2013" in the copyright line.
+      Kept the clean 3-col layout.
+   DECISION: left sitemap lastModified as build-time `now` — fine for a static site
+   (reflects last deploy); no per-page modified-date source exists, so changing it
+   would add complexity with no real SEO benefit.
+   >>> Free, no-data polish is now largely EXHAUSTED. Next meaningful work needs real
+       school data — see P4 list. <<<
 
 ### P5. (future) more "St. Mathews-like" polish + Phase 2+ (DB, auth, AI chatbot, ads, payments)
 
