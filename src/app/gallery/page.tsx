@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { getGalleryItems } from "@/lib/api";
 import { siteConfig } from "@/config/site";
@@ -19,6 +20,7 @@ export default async function GalleryPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Gallery" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Gallery</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             A glimpse of life, events, and activities at {siteConfig.shortName}.

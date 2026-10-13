@@ -9,6 +9,7 @@ import {
   Navigation,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function ContactPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Contact Us" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Contact Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             We are here to help. Reach out to us anytime — we would love to hear

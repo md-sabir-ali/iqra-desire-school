@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Trophy, Medal, Award, ArrowRight } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getAchievements } from "@/lib/api";
 import { siteConfig } from "@/config/site";
 
@@ -22,6 +23,7 @@ export default async function AchievementsPage() {
       {/* Page header */}
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Achievements" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">
             Achievements &amp; Toppers
           </h1>

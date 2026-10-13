@@ -14,6 +14,7 @@ import {
   Users,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getFaculty } from "@/lib/api";
 import { siteConfig } from "@/config/site";
 
@@ -39,6 +40,7 @@ export default async function AboutPage() {
       {/* Page header */}
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "About Us" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">About Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Learn about our journey, values, and the people who make{" "}

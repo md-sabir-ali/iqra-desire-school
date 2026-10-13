@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getClassLevels } from "@/lib/api";
 import { siteConfig } from "@/config/site";
 
@@ -37,6 +38,7 @@ export default async function AcademicsPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Academics" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Academics</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             A structured, caring academic journey from {siteConfig.classesRange}.

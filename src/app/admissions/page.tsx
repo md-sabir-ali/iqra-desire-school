@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClipboardList, FileText, UserCheck, Phone, MessageCircle } from "lucide-react";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import { admissionFaqs } from "@/data/faqs";
@@ -42,6 +43,7 @@ export default function AdmissionsPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Admissions" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Admissions</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Admissions open for {siteConfig.classesRange}. We would love to welcome

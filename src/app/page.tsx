@@ -24,7 +24,7 @@ import { PillarsCarousel } from "@/components/PillarsCarousel";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { stats, standApart, facilities, classLevels } from "@/data/academics";
-import { getNotices, getGalleryItems } from "@/lib/api";
+import { getNotices, getGalleryItems, getAchievements } from "@/lib/api";
 import { siteConfig } from "@/config/site";
 
 // Map icon names (from data) to actual icon components.
@@ -49,6 +49,7 @@ export const revalidate = 60;
 export default async function HomePage() {
   const notices = (await getNotices()).slice(0, 3);
   const gallery = (await getGalleryItems()).slice(0, 6);
+  const achievers = (await getAchievements()).slice(0, 3);
 
   return (
     <>
@@ -237,35 +238,43 @@ export default async function HomePage() {
           subtitle="We are proud of our students' hard work and success."
           centered
         />
-        <div className="grid gap-6 sm:grid-cols-2">
-          <Reveal from="left">
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-md">
-              <Image
-                src="/images/galary/2026 topper.jpg"
-                alt="Toppers of the school"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <p className="font-semibold text-white">Our Toppers</p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {achievers.map((a, i) => (
+            <Reveal key={a.id} delay={i * 120}>
+              <div className="group relative aspect-video overflow-hidden rounded-2xl shadow-md">
+                {a.photo ? (
+                  <Image
+                    src={a.photo}
+                    alt={a.name}
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-brand-50 text-brand-200">
+                    <Trophy className="h-14 w-14" />
+                  </div>
+                )}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-4">
+                  {a.year && (
+                    <span className="mb-1 inline-block rounded-full bg-accent-500 px-2.5 py-0.5 text-xs font-semibold text-white">
+                      {a.year}
+                    </span>
+                  )}
+                  <p className="font-semibold text-white">{a.name}</p>
+                </div>
               </div>
-            </div>
-          </Reveal>
-          <Reveal from="right">
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-md">
-              <Image
-                src="/images/galary/medal.jpg"
-                alt="Students receiving medals"
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 50vw"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                <p className="font-semibold text-white">Award Winners</p>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/achievements"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-accent-600 hover:underline"
+          >
+            View all achievements <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </Section>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { NoticesClient } from "@/components/NoticesClient";
 import { getNotices } from "@/lib/api";
 import { siteConfig } from "@/config/site";
@@ -19,6 +20,7 @@ export default async function NoticesPage() {
     <>
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
+          <Breadcrumbs items={[{ name: "Notices" }]} />
           <h1 className="text-3xl font-extrabold sm:text-4xl">Notices &amp; News</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Stay updated with the latest announcements from the school.
