@@ -157,7 +157,7 @@ export default async function AcademicsPage() {
             </div>
             <Link
               href="/admissions"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-base font-bold text-white shadow-lg transition hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-brand-800"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-base font-bold text-brand-900 shadow-lg transition hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-brand-800"
             >
               Apply Now <ArrowRight className="h-5 w-5" />
             </Link>

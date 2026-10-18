@@ -30,7 +30,7 @@ export function Footer() {
           </div>
           <Link
             href="/admissions"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-bold text-white shadow transition hover:bg-accent-600"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-bold text-brand-900 shadow transition hover:bg-accent-400"
           >
             Apply Now <ArrowRight className="h-4 w-4" />
           </Link>

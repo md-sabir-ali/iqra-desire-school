@@ -78,17 +78,23 @@ export function HeroSlider() {
 
       {/* Slide indicator dots */}
       {slides.length > 1 && (
-        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+        <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2">
           {slides.map((_, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setCurrent(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-2.5 rounded-full transition-all ${
-                i === current ? "w-8 bg-accent-500" : "w-2.5 bg-white/60 hover:bg-white"
-              }`}
-            />
+              className="group flex h-11 w-11 items-center justify-center"
+            >
+              <span
+                className={`block h-2.5 rounded-full transition-all ${
+                  i === current
+                    ? "w-8 bg-accent-500"
+                    : "w-2.5 bg-white/60 group-hover:bg-white"
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}

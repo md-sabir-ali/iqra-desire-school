@@ -88,7 +88,7 @@ export default async function AchievementsPage() {
                     </div>
                   )}
                   {a.year && (
-                    <span className="absolute left-3 top-3 rounded-full bg-accent-500 px-3 py-1 text-xs font-semibold text-white shadow">
+                    <span className="absolute left-3 top-3 rounded-full bg-accent-500 px-3 py-1 text-xs font-semibold text-brand-900 shadow">
                       {a.year}
                     </span>
                   )}
@@ -127,7 +127,7 @@ export default async function AchievementsPage() {
             </div>
             <Link
               href="/admissions"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-base font-bold text-white shadow-lg transition hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-brand-800"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-base font-bold text-brand-900 shadow-lg transition hover:bg-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 focus:ring-offset-brand-800"
             >
               Enquire Now <ArrowRight className="h-5 w-5" />
             </Link>

@@ -75,17 +75,23 @@ export function PillarsCarousel() {
               <ChevronRight className="h-5 w-5" />
             </button>
 
-            <div className="ml-2 flex gap-2">
+            <div className="ml-2 flex">
               {corePillars.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => go(i)}
                   aria-label={`Go to pillar ${i + 1}`}
-                  className={`h-2.5 rounded-full transition-all ${
-                    i === index ? "w-8 bg-accent-500" : "w-2.5 bg-white/50 hover:bg-white"
-                  }`}
-                />
+                  className="group flex h-11 w-11 items-center justify-center"
+                >
+                  <span
+                    className={`block h-2.5 rounded-full transition-all ${
+                      i === index
+                        ? "w-8 bg-accent-500"
+                        : "w-2.5 bg-white/50 group-hover:bg-white"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </div>

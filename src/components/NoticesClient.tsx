@@ -62,7 +62,7 @@ export function NoticesClient({ notices }: { notices: Notice[] }) {
               className="relative overflow-hidden rounded-2xl border-l-4 border-accent-500 bg-gradient-to-r from-accent-50 to-white p-5 shadow-sm sm:p-6"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-1 rounded-full bg-accent-500 px-3 py-1 text-xs font-bold text-white">
+                <span className="inline-flex items-center gap-1 rounded-full bg-accent-500 px-3 py-1 text-xs font-bold text-brand-900">
                   <Pin className="h-3.5 w-3.5" /> Pinned
                 </span>
                 <span

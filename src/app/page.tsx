@@ -96,7 +96,7 @@ export default async function HomePage() {
                 child grow to their full potential.
               </p>
               <Link href="/about" className="btn-secondary mt-6">
-                Learn More <ArrowRight className="h-4 w-4" />
+                Learn more about our school <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>
@@ -186,6 +186,7 @@ export default async function HomePage() {
           title="A Journey Through the Classes"
           subtitle="From the very first day in Nursery to the Class 10 board exams, we guide every child step by step."
           centered
+          dark
         />
         <div className="relative mt-4">
           {/* connecting line (desktop) */}
@@ -201,7 +202,7 @@ export default async function HomePage() {
                     </span>
                   </div>
                   <div className="flex-1 rounded-2xl bg-brand-700/60 p-5 ring-1 ring-white/10 transition hover:bg-brand-700 hover:ring-accent-400/40">
-                    <h3 className="text-base font-bold text-accent-300">{level.name}</h3>
+                    <h3 className="text-base font-bold text-accent-400">{level.name}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-brand-100">
                       {level.description}
                     </p>
@@ -257,7 +258,7 @@ export default async function HomePage() {
                 )}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-4">
                   {a.year && (
-                    <span className="mb-1 inline-block rounded-full bg-accent-500 px-2.5 py-0.5 text-xs font-semibold text-white">
+                    <span className="mb-1 inline-block rounded-full bg-accent-500 px-2.5 py-0.5 text-xs font-semibold text-brand-900">
                       {a.year}
                     </span>
                   )}
