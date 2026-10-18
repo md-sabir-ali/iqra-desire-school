@@ -30,7 +30,88 @@ interface Body {
   company?: string;
 }
 
+/**
+ * ABUSE GUARDS (free, no external service)
+ * ---------------------------------------------------------------------------
+ * The enquiry form posts from our own pages. To reduce bot/spam abuse of the
+ * Sanity CMS record list and the Web3Forms email quota, we:
+ *   (a) only accept POSTs whose Origin matches our own site, and
+ *   (b) apply a lightweight in-memory per-IP rate limit.
+ *
+ * NOTE: the in-memory counter resets on each serverless cold start and is not
+ * shared across Vercel instances, so it is a best-effort speed bump — not a
+ * hard guarantee. It meaningfully slows naive bots at zero cost. For stronger
+ * limits later, swap this for Vercel KV / Upstash or a captcha.
+ */
+
+// Hosts allowed to submit the form (our own site + local dev).
+const ALLOWED_HOSTS = [
+  "iqradesire.com",
+  "www.iqradesire.com",
+  "iqra-desire-school.vercel.app",
+  "localhost:3000",
+  "127.0.0.1:3000",
+];
+
+// Per-IP rate limit: max submissions per rolling window.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function getClientIp(request: Request): string {
+  const fwd = request.headers.get("x-forwarded-for");
+  if (fwd) return fwd.split(",")[0].trim();
+  return request.headers.get("x-real-ip") || "unknown";
+}
+
+/** Returns true if this IP is within its allowance (and records the hit). */
+function withinRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const bucket = rateBuckets.get(ip);
+  if (!bucket || now > bucket.resetAt) {
+    rateBuckets.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+  if (bucket.count >= RATE_LIMIT_MAX) return false;
+  bucket.count += 1;
+  return true;
+}
+
+/** Checks the request Origin/Host header against our allowlist. */
+function isAllowedOrigin(request: Request): boolean {
+  const origin = request.headers.get("origin");
+  // Same-origin form posts normally send an Origin header. If present, it must
+  // match our allowlist. If absent (some privacy setups strip it), fall back to
+  // the Host header so legitimate users are not blocked.
+  if (origin) {
+    try {
+      return ALLOWED_HOSTS.includes(new URL(origin).host);
+    } catch {
+      return false;
+    }
+  }
+  const host = request.headers.get("host");
+  return host ? ALLOWED_HOSTS.includes(host) : false;
+}
+
 export async function POST(request: Request) {
+  // 0a) Origin check — block cross-site/bot POSTs early.
+  if (!isAllowedOrigin(request)) {
+    return NextResponse.json({ ok: false, message: "Forbidden." }, { status: 403 });
+  }
+
+  // 0b) Rate limit per IP.
+  if (!withinRateLimit(getClientIp(request))) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message:
+          "Too many requests. Please wait a few minutes, or call/WhatsApp us instead.",
+      },
+      { status: 429 }
+    );
+  }
+
   let body: Body;
   try {
     body = await request.json();

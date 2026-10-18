@@ -25,27 +25,29 @@ import type {
   EnquiryResult,
 } from "@/lib/types";
 
+/**
+ * Shared sort for notices: pinned first, then newest date first.
+ */
+function sortNotices(list: Notice[]): Notice[] {
+  return [...list].sort((a, b) => {
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+}
+
 export async function getNotices(): Promise<Notice[]> {
   // Prefer Sanity CMS (user-managed). Fall back to static data if the CMS is
   // empty or unreachable, so the site never breaks.
   try {
     const fromCms = await fetchNotices();
     if (fromCms.length > 0) {
-      return fromCms.sort((a, b) => {
-        if (a.pinned && !b.pinned) return -1;
-        if (!a.pinned && b.pinned) return 1;
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      });
+      return sortNotices(fromCms);
     }
   } catch {
     // ignore and use static fallback below
   }
-  const sorted = [...staticNotices].sort((a, b) => {
-    if (a.pinned && !b.pinned) return -1;
-    if (!a.pinned && b.pinned) return 1;
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-  return sorted;
+  return sortNotices(staticNotices);
 }
 
 export async function getGalleryItems(): Promise<GalleryItem[]> {
