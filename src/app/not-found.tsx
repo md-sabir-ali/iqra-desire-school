@@ -18,7 +18,7 @@ export default function NotFound() {
 
       <div className="relative">
         <p className="text-7xl font-extrabold text-accent-400 sm:text-8xl">404</p>
-        <h1 className="mt-4 text-2xl font-bold sm:text-3xl">
+        <h1 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl">
           Oops! Page Not Found
         </h1>
         <p className="mx-auto mt-3 max-w-md text-brand-100">

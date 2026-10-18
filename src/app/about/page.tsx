@@ -45,7 +45,7 @@ export default async function AboutPage() {
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
           <Breadcrumbs items={[{ name: "About Us" }]} path="/about" />
-          <h1 className="text-3xl font-extrabold sm:text-4xl">About Us</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">About Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Learn about our journey, values, and the people who make{" "}
             {siteConfig.shortName} a special place to learn and grow.

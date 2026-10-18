@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Navbar } from "@/components/Navbar";
@@ -10,6 +10,17 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+// Serif display font for headings — gives an established, academic, trustworthy
+// feel. Loaded via next/font (self-hosted, no layout shift, free). `optical`
+// sizing + a bold weight keep large headings crisp.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["600", "700"],
+  style: ["normal"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -47,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="flex min-h-screen flex-col">
         <StructuredData />
         <Navbar />

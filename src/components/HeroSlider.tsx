@@ -3,25 +3,48 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  ChevronLeft,
+  ChevronRight,
+  CalendarDays,
+  GraduationCap,
+  Languages,
+} from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { heroSlides } from "@/data/gallery";
 
 export function HeroSlider() {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
   const slides = heroSlides.length > 0 ? heroSlides : [{ src: "/images/placeholder.svg", alt: "School" }];
 
-  // Auto-advance every 5 seconds.
+  const go = (next: number) => setCurrent((next + slides.length) % slides.length);
+
+  // Auto-advance every 5 seconds (pauses on hover/focus).
   useEffect(() => {
-    if (slides.length <= 1) return;
+    if (slides.length <= 1 || paused) return;
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [slides.length, paused]);
+
+  const trustChips = [
+    { icon: CalendarDays, label: `Est. ${siteConfig.establishedYear}` },
+    { icon: GraduationCap, label: siteConfig.classesRange },
+    { icon: Languages, label: "English Medium" },
+  ];
 
   return (
-    <section className="relative h-[75vh] min-h-[460px] w-full overflow-hidden bg-brand-900">
+    <section
+      className="relative h-[80vh] min-h-[480px] w-full overflow-hidden bg-brand-900 lg:h-[88vh]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
       {/* Rotating background images with fade */}
       {slides.map((slide, i) => (
         <div
@@ -51,14 +74,32 @@ export function HeroSlider() {
         <span className="inline-flex w-fit items-center rounded-full bg-accent-500/90 px-4 py-1 text-sm font-semibold text-brand-900">
           Admissions Open {new Date().getFullYear()}–{new Date().getFullYear() + 1}
         </span>
-        <h1 className="mt-5 max-w-3xl text-3xl font-extrabold leading-tight drop-shadow-sm sm:text-5xl">
+
+        {/* School name is the semantic h1 (SEO). The benefit line below is the
+            large visual subhead that speaks to parents. */}
+        <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.1] tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl">
           {siteConfig.name}
         </h1>
-        <p className="mt-4 text-xl font-medium text-accent-400">{siteConfig.tagline}</p>
-        <p className="mt-3 max-w-xl text-brand-100">
+        <p className="mt-4 max-w-2xl font-display text-xl font-semibold text-accent-400 sm:text-2xl">
+          A caring school where every child learns, grows &amp; achieves
+        </p>
+        <p className="mt-3 max-w-xl text-base text-brand-100 sm:text-lg">
           Quality English-medium education from {siteConfig.classesRange} in{" "}
           {siteConfig.contact.addressLine}.
         </p>
+
+        {/* Trust chips */}
+        <ul className="mt-6 flex flex-wrap gap-2.5">
+          {trustChips.map(({ icon: Icon, label }) => (
+            <li
+              key={label}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm font-medium backdrop-blur-sm"
+            >
+              <Icon className="h-4 w-4 text-accent-400" />
+              {label}
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
@@ -75,6 +116,28 @@ export function HeroSlider() {
           </a>
         </div>
       </div>
+
+      {/* Prev / next arrows (desktop-friendly; hidden on smallest screens) */}
+      {slides.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={() => go(current - 1)}
+            aria-label="Previous slide"
+            className="absolute left-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:flex"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => go(current + 1)}
+            aria-label="Next slide"
+            className="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:flex"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </>
+      )}
 
       {/* Slide indicator dots */}
       {slides.length > 1 && (

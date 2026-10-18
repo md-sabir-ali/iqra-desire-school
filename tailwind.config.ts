@@ -27,9 +27,16 @@ const config: Config = {
           500: "#d4a017",
           600: "#b8860b",
         },
+        // Soft warm neutral used as a supporting section background, so the page
+        // isn't only white / gray / navy. Pairs with the navy+gold brand.
+        cream: {
+          50: "#fdfaf3",
+          100: "#faf3e6",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
     },
   },

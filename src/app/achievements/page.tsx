@@ -25,7 +25,7 @@ export default async function AchievementsPage() {
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
           <Breadcrumbs items={[{ name: "Achievements" }]} path="/achievements" />
-          <h1 className="text-3xl font-extrabold sm:text-4xl">
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Achievements &amp; Toppers
           </h1>
           <p className="mt-2 max-w-2xl text-brand-100">
@@ -117,7 +117,7 @@ export default async function AchievementsPage() {
         <div className="container-page py-12 sm:py-14">
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
             <div>
-              <h2 className="text-2xl font-bold text-white sm:text-3xl">
+              <h2 className="font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Be part of our success story
               </h2>
               <p className="mt-2 max-w-xl text-brand-100">

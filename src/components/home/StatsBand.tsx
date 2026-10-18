@@ -5,7 +5,7 @@ import { stats } from "@/data/academics";
 /** Animated stats band shown directly under the hero on the home page. */
 export function StatsBand() {
   return (
-    <section className="bg-brand-800 py-12 text-white">
+    <section className="relative bg-brand-800 py-12 text-white">
       <div className="container-page grid grid-cols-2 gap-6 sm:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={i * 100}>
@@ -25,6 +25,8 @@ export function StatsBand() {
           </Reveal>
         ))}
       </div>
+      {/* Thin gold divider for a crisp, premium seam into the next section. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-accent-400/0 via-accent-400/70 to-accent-400/0" />
     </section>
   );
 }

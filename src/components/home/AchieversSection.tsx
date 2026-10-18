@@ -8,7 +8,7 @@ import type { Achievement } from "@/lib/types";
 /** "Celebrating Our Achievers" — top 3 achievements/toppers (CMS-driven). */
 export function AchieversSection({ achievers }: { achievers: Achievement[] }) {
   return (
-    <Section>
+    <Section className="bg-cream-50">
       <SectionHeading
         eyebrow="Our Pride"
         title="Celebrating Our Achievers"

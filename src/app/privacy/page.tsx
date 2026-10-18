@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
           <Breadcrumbs items={[{ name: "Privacy Policy" }]} path="/privacy" />
-          <h1 className="text-3xl font-extrabold sm:text-4xl">Privacy Policy</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Privacy Policy</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Your trust matters to us. This page explains, in simple terms, what
             information we collect and how we use it.

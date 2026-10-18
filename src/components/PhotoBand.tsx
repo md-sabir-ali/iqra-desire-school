@@ -42,7 +42,7 @@ export function PhotoBand({
                 {eyebrow}
               </p>
             )}
-            <h2 className="text-2xl font-bold drop-shadow sm:text-4xl">{title}</h2>
+            <h2 className="font-display text-3xl font-bold tracking-tight drop-shadow sm:text-4xl">{title}</h2>
             {text && <p className="mt-3 text-brand-100">{text}</p>}
           </div>
         </Reveal>

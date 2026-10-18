@@ -49,7 +49,7 @@ export default function ContactPage() {
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
           <Breadcrumbs items={[{ name: "Contact Us" }]} path="/contact" />
-          <h1 className="text-3xl font-extrabold sm:text-4xl">Contact Us</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Contact Us</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             We are here to help. Reach out to us anytime — we would love to hear
             from you.

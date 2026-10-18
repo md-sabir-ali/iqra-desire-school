@@ -6,7 +6,7 @@ import { iconMap, fallbackIcon } from "./iconMap";
 /** "Our Facilities" — icon-card grid of the school's infrastructure. */
 export function FacilitiesSection() {
   return (
-    <Section>
+    <Section className="bg-cream-50">
       <SectionHeading
         eyebrow="Infrastructure"
         title="Our Facilities"

@@ -10,7 +10,7 @@ export function CtaSection() {
     <Section className="bg-brand-700 text-white">
       <Reveal>
         <div className="flex flex-col items-center gap-4 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl">Give Your Child the Best Start</h2>
+          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Give Your Child the Best Start</h2>
           <p className="max-w-xl text-brand-100">
             Admissions are open for {siteConfig.classesRange}. Enquire today and
             take the first step toward a bright future.

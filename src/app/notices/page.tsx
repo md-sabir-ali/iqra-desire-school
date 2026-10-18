@@ -22,7 +22,7 @@ export default async function NoticesPage() {
       <div className="bg-brand-700 text-white">
         <div className="container-page py-14">
           <Breadcrumbs items={[{ name: "Notices" }]} path="/notices" />
-          <h1 className="text-3xl font-extrabold sm:text-4xl">Notices &amp; News</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Notices &amp; News</h1>
           <p className="mt-2 max-w-2xl text-brand-100">
             Stay updated with the latest announcements from the school.
           </p>
