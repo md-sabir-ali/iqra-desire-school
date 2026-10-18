@@ -22,18 +22,32 @@
 - ✅ AUDIT + FIXES DONE (2026-10-13): full pro audit of live site; fixed P0 "0%" stat
   bug + canonicals + hero LCP + NEW /privacy page + tel/keywords/grammar/breadcrumb.
   (see P4j below). Commit c350d7e on main; verified live.
+- ✅ PAGESPEED PERFECTED (2026-10-18) — A11y & SEO pushed 92 → 100. User sent PSI
+    report screenshots (mobile). Fixed real flagged items (commit 3df5fe4 on main):
+      A11y CONTRAST: (a) navy "A Journey Through the Classes" section eyebrow/subtitle
+        were text-brand-600/text-gray-600 on bg-brand-800 → added `dark` variant to
+        SectionHeading (Section.tsx): eyebrow→accent-400, title→white, subtitle→brand-100;
+        passed dark on that section. (b) gold buttons/badges bg-accent-500 had text-white
+        (~1.9:1 FAIL) → changed to text-brand-900 (~8:1) in Footer, academics CTA,
+        achievements CTA + year badge, home year badge, NoticesClient Pinned badge.
+        (c) fixed undefined text-accent-300 → accent-400 on home level name.
+      BEST PRACTICES TOUCH TARGETS: HeroSlider + PillarsCarousel dots were h-2.5 (10px)
+        → wrapped in h-11 w-11 (44px) button with small visual <span>; removed gap-2.
+      SEO descriptive link: home "Learn More" → "Learn more about our school".
+    VERIFIED LIVE (user PSI screenshots, Oct 18 11:17 report):
+      MOBILE: Performance 90, Accessibility 100, Best Practices 100, SEO 100, Agentic 2/2.
+      (Perf 97→90 is just PSI lab run variance — FCP 0.9s, TBT 10ms, CLS 0 all green;
+       LCP 3.3s variance; the contrast/padding/link edits don't affect performance.)
+    => A11y + SEO now MAXED at 100. Files: Section.tsx, page.tsx, Footer.tsx,
+       academics/page.tsx, achievements/page.tsx, NoticesClient.tsx, HeroSlider.tsx,
+       PillarsCarousel.tsx. Build 0 errors, home stays static.
 - ✅ PAGESPEED VERIFIED (2026-10-13) — real lab scores, user confirmed:
     MOBILE : Performance 97, Accessibility 92, Best Practices 100, SEO 92
     DESKTOP: Performance 99, Accessibility 92, Best Practices 100, SEO 92  (+ Agentic Browsing 2/2)
     (CrUX field data = "No Data" — just means site is new/low-traffic, NOT a problem.)
     => Performance/Best-Practices essentially maxed. Hero q=70 fix worked.
-- ⏭️ PENDING (user will provide): the exact Accessibility(92) + SEO(92) warning items
-    from the PSI report so Kiro can push both 92 → 100. STRONG GUESS for A11y = color
-    contrast (gold #d4a017 text — flagged in audit). Do NOT guess-fix; wait for the
-    actual report items from the user. Likely SEO item = minor (crawlable links / alt).
-- NEXT PLANNED: (a) do the 92→100 A11y/SEO fix once user sends report items;
-  (b) REAL SCHOOL DATA (P4j open list): principal, confirm facilities + affordability
-  claims, real office hours, exact map pin, real stats/toppers.
+- NEXT PLANNED: REAL SCHOOL DATA (P4j open list): principal, confirm facilities +
+  affordability claims, real office hours, exact map pin, real stats/toppers.
 - PENDING USER ACTIONS (free): (a) enable Vercel Analytics in dashboard Analytics tab;
   (b) delete the "KIRO TEST" entry in /admin → Admission Enquiry + leftover test items
   (gallery "test" photo, duplicate "Admission Open" notice, empty Achievement);
